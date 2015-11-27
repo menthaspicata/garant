@@ -1,0 +1,39 @@
+<article>
+		<h1>{{ recipe.title }}</h1>
+		<h3>{{ recipe.subtitle }}</h3>
+		<img ng-src="{{ recipe.headbg }}">
+
+		<hr>
+
+		<ul>
+			<li>{{ recipe.portions }}</li>
+			<li>{{ recipe.calories }}</li>
+			<li>{{ recipe.time }}</li>
+		</ul>
+
+		<p>{{ recipe.desc }}</p>
+
+		<img ng-src="{{ recipe.ingbg }}">
+
+		<hr>
+
+		<p>Ingredients</p>
+		<ul>
+			<li ng-repeat="ing in recipe.ingredients">
+				{{ ing }}
+			</li>
+		</ul>
+
+		<hr>
+
+		<p>Steps</p>
+		<ul>
+			<li ng-repeat="step in recipe.steps">
+				<img ng-src="{{ step.img }}">
+				<h3>{{ step.title }}</h3>
+				<p>{{ step.desc }}</p>
+			</li>
+		</ul>
+
+
+</article>
