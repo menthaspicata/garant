@@ -1,0 +1,83 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure, div {
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background: #EFC232; 
+}
+
+/**
+ * Basic styling
+ */
+body {
+    background: $yellow;
+    font-family: $font-banana;
+}
+
+
+/**
+ * Images
+ */
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+ul {
+    list-style-type: none;    
+}
+
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-banana-medium;
+    font-weight: 300;
+    
+
+}
+
+/**
+ * Links
+ */
+a {
+    color: tomato;
+    text-decoration: none;
+
+    &:visited {
+
+    }
+
+    &:hover {
+
+        text-decoration: underline;
+    }
+}
+
+
+
+/**
+ * Clearfix
+ */
+@mixin clearfix() {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+aside {
+    padding: $woid;
+    margin:  $woid;
+}

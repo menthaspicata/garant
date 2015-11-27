@@ -1,0 +1,58 @@
+<header class="list-header">
+
+	<div class="wrapp">
+		
+		<h1>CookBook</h1>
+
+		<section class="functions">			
+
+			<select class="ingredients" ng-model="orderProp">
+				<option value="Beef" selected="selected">Beef</option>
+				<option value="Fish">Fish</option>
+				<option value="Lamb">Lamb</option>
+				<option value="Pork">Pork</option>
+				<option value="Poultry">Poultry</option>
+				<option value="Shellfish">Shellfish</option>
+				<option value="Vegeterian">Vegeterian</option>
+			</select>
+
+			<input class="search" ng-model="query">
+		</section>
+
+		
+	</div>
+</header>
+
+<section class="recipes">	
+
+	<div class="wrapp">
+		
+	
+
+	<ul>
+		<li class="recipe-thumb" ng-repeat="recipe in recipes | filter:query ">
+		<a href="#/recipes/{{ recipe.link }}" alt="{{ recipe.title }}" title="{{ recipe.title }}">
+			
+			<div class="thumb">
+				<img ng-src="{{ recipe.thumb }}" alt="{{ recipe.title }}" title="{{ recipe.title }}">
+			</div>
+
+			<div class="recipe-meta">
+				<h1>{{ recipe.title | ampersants }}</h1>
+				<h4>{{ recipe.subtitle | ampersants}}</h4>
+
+				<br>
+
+
+			</div>			
+		</a>
+		</li>
+	</ul>
+
+	<div class="load-more">
+		<button ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">LOAD MORE</button>
+	</div>
+
+	</div>
+</section>
+
