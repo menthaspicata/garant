@@ -25,4 +25,4 @@ require 'functions/add_scripts.php';
 
 require 'functions/house.php';
 require 'functions/house_meta_main.php';
-require 'functions/house_meta_galery.php';
+require 'functions/house_meta_gallery.php';

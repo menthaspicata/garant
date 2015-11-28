@@ -1,11 +1,34 @@
 <?php
 
+/**
+ * 	global array with all main custom meta boxes fields 
+ * 	to add or delete meta field just add/del value in this array
+ */
+
+$house_fields = array(
+	"house_price",
+	"house_adress",
+	"house_floor",
+	"house_rooms",
+	"house_description",
+	"house_all_floor",
+	"house_area_total",
+	"house_area_live",
+	"house_area_kitchen",
+	"house_type",
+	"house_base"
+);
+
 
 /**
  * 	main meta box
  */
 
 function add_view_house_meta_main( $post ) {
+
+	global $house_fields;
+
+	
 
 	// Add a nonce field so we can check for it later.
 	wp_nonce_field( 'save_house_meta_main', 'house_meta_main_nonce' );
@@ -14,19 +37,14 @@ function add_view_house_meta_main( $post ) {
 	 * Use get_post_meta() to retrieve an existing value
 	 * from the database and use the value for the form.
 	 */
-	$house_price = get_post_meta( $post->ID, '_house_price', true );
-	$house_adress = get_post_meta( $post->ID, '_house_adress', true );
-	$house_floor = get_post_meta( $post->ID, '_house_floor', true );
-	$house_rooms = get_post_meta( $post->ID, '_house_rooms', true );
-	$house_description = get_post_meta( $post->ID, '_house_description', true );
-	$house_all_floor = get_post_meta( $post->ID, '_house_all_floor', true );
-	$house_area_total = get_post_meta( $post->ID, '_house_area_total', true );
-	$house_area_live = get_post_meta( $post->ID, '_house_area_live', true );
-	$house_area_kitchen = get_post_meta( $post->ID, '_house_area_kitchen', true );
-	$house_type = get_post_meta( $post->ID, '_house_type', true );
-	$house_base = get_post_meta( $post->ID, '_house_base', true );
+	
+	foreach ($house_fields as $house_field) {
+		${ $house_field } = get_post_meta( $post->ID, '_' . $house_field, true );
+	}
 
 	global $USD_p24;
+
+
 
 	?>
 
@@ -39,6 +57,8 @@ function add_view_house_meta_main( $post ) {
 		}
 	</style>
 
+	
+
 	<section id="house_meta_wrapp">
 		
 	<p>
@@ -48,10 +68,10 @@ function add_view_house_meta_main( $post ) {
 	<hr>
 	<p>
 		<label for="house_price">Цена:</label>
-		<input type="text" id="house_price" name="house_price" value="<?= esc_attr( $house_price ) ?>" size="8" /> <span>$</span>
+		<input onchange="" type="text" id="house_price" name="house_price" value="<?= esc_attr( $house_price ) ?>" size="8" /> <span>$</span>
 		<br>
 		<label>Цена в гривнах:</label>
-		<input type="text" value="<?= $house_price * $USD_p24 ?>" size="8" disabled>&nbsp;<i>по курсу нбу</i>
+		<input id="house_price_grivna" type="text" value="<?= $house_price * $USD_p24 ?>" size="8" disabled>&nbsp;<i>по курсу нбу</i>
 
 	</p>
 	<hr>
@@ -100,6 +120,13 @@ function add_view_house_meta_main( $post ) {
 	</p>
 
 
+
+
+	<script type="text/javascript">
+		jQuery('#house_price_grivna').
+	</script>
+
+
 	</section>
 
 <?php
@@ -129,95 +156,15 @@ function save_house_meta_main( $post_id ) {
 
 	if (!current_user_can('edit_post')) {	return;	}
 
-	
-
-	if ( isset( $_POST['house_price'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_price', 
-								sanitize_text_field( $_POST['house_price']) 
-								);
-	}
+	global $house_fields;
 
 
-	if ( isset( $_POST['house_adress'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_adress', 
-								sanitize_text_field( $_POST['house_adress'] ) 
-								);
-	}
-
-
-	if ( isset( $_POST['house_floor'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_floor', 
-								sanitize_text_field( $_POST['house_floor'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_rooms'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_rooms', 
-								sanitize_text_field( $_POST['house_rooms'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_description'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_description', 
-								sanitize_text_field( $_POST['house_description'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_all_floor'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_all_floor', 
-								sanitize_text_field( $_POST['house_all_floor'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_area_total'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_area_total', 
-								sanitize_text_field( $_POST['house_area_total'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_area_live'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_area_live', 
-								sanitize_text_field( $_POST['house_area_live'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_area_kitchen'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_area_kitchen', 
-								sanitize_text_field( $_POST['house_area_kitchen'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_type'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_type', 
-								sanitize_text_field( $_POST['house_type'] ) 
-								);
-	}
-
-	if ( isset( $_POST['house_base'] ) ) {
-
-		update_post_meta( $post_id, 
-								'_house_base', 
-								sanitize_text_field( $_POST['house_base'] ) 
-								);
+	foreach ($house_fields as $house_field) {
+		if ( isset( $_POST[ $house_field ] ) ) {
+			update_post_meta( $post_id, 
+									'_' . $house_field, 
+									sanitize_text_field( $_POST[ $house_field ]) 
+									);
+		}
 	}
 }
