@@ -3,20 +3,26 @@
 /**
  * 	global array with all main custom meta boxes fields 
  * 	to add or delete meta field just add/del value in this array
+ * 	and add html with this variable
  */
 
 $house_fields = array(
-	"house_price",
-	"house_adress",
-	"house_floor",
-	"house_rooms",
-	"house_description",
-	"house_all_floor",
-	"house_area_total",
-	"house_area_live",
-	"house_area_kitchen",
-	"house_type",
-	"house_base"
+	"house_price",				//цена
+	"house_adress",			//улица
+	"house_adress_number",	//номер дома
+	"house_adress_lat",		//широта
+	"house_adress_long",		//долгота
+	"house_floor",				//этаж
+	"house_rooms",				//количество комнат
+	"house_description",		//описание
+	"house_all_floor",		//этажей в доме
+	"house_area_total",		//общая площадь
+	"house_area_live",		//жилая площадь
+	"house_area_kitchen",	//площадь кухни
+	"house_type",				//тип постройки
+	"house_base",				//фундамент
+	"house_phone",				//телефон владельца
+	"house_who_answer"		//имя владельца
 );
 
 
@@ -27,8 +33,7 @@ $house_fields = array(
 function add_view_house_meta_main( $post ) {
 
 	global $house_fields;
-
-	
+	global $USD_p24;
 
 	// Add a nonce field so we can check for it later.
 	wp_nonce_field( 'save_house_meta_main', 'house_meta_main_nonce' );
@@ -36,17 +41,17 @@ function add_view_house_meta_main( $post ) {
 	/*
 	 * Use get_post_meta() to retrieve an existing value
 	 * from the database and use the value for the form.
-	 */
-	
+	 */	
 	foreach ($house_fields as $house_field) {
 		${ $house_field } = get_post_meta( $post->ID, '_' . $house_field, true );
 	}
 
-	global $USD_p24;
-
-
 
 	?>
+
+
+
+
 
 	<style type="text/css">
 		#house_meta_wrapp label {
@@ -60,17 +65,36 @@ function add_view_house_meta_main( $post ) {
 	
 
 	<section id="house_meta_wrapp">
+
+	
 		
 	<p>
-		<label for="house_adress">Адрес:</label>
-		<input type="text" id="house_adress" name="house_adress" value="<?= esc_attr( $house_adress ) ?>" style="width:60%;" />
+		<label for="house_adress">Улица:</label>
+		<input type="text" id="house_adress" name="house_adress" value="<?= esc_attr( $house_adress ) ?>" style="width:50%;" />
 	</p>
+
+	<p>
+		<label for="house_adress_number">Номер дома:</label>
+		<input type="text" id="house_adress_number" name="house_adress_number" value="<?= esc_attr( $house_adress_number ) ?>" size="8" />
+	</p>
+
+	<p>
+		<label for="house_adress_lat">Широта (lat):</label>
+		<input type="text" id="house_adress_lat" name="house_adress_lat" value="<?= esc_attr( $house_adress_lat ) ?>" size="8" />
+	</p>
+
+	<p>
+		<label for="house_adress_long">Долгота (long):</label>
+		<input type="text" id="house_adress_long" name="house_adress_long" value="<?= esc_attr( $house_adress_long ) ?>" size="8" />
+	</p>
+	<hr>
+	<p>Широту и долготу нужно брать из google maps, предварительно указав точный адрес. Где их найти написано <a href="https://support.google.com/maps/answer/18539?hl=ru">тут</a></p>
 	<hr>
 	<p>
 		<label for="house_price">Цена:</label>
 		<input onchange="" type="text" id="house_price" name="house_price" value="<?= esc_attr( $house_price ) ?>" size="8" /> <span>$</span>
 		<br>
-		<label>Цена в гривнах:</label>
+		<label for="house_price_grivna">Цена в гривнах:</label>
 		<input id="house_price_grivna" type="text" value="<?= $house_price * $USD_p24 ?>" size="8" disabled>&nbsp;<i>по курсу нбу</i>
 
 	</p>
@@ -119,15 +143,36 @@ function add_view_house_meta_main( $post ) {
 		<input type="text" id="house_base" name="house_base" value="<?= esc_attr( $house_base ) ?>" style="width:60%;" />	
 	</p>
 
+	<hr>
+	<h2>Информация о владельце</h2>
+	<p>
+		<label for="house_phone">Телефон владельца:</label>
+		<input type="text" id="house_phone" name="house_phone" value="<?= esc_attr( $house_phone ) ?>" style="width:60%;" />
+	</p>
+
+	<p>
+		<label for="house_who_answer">Кого спросить:</label>
+		<input type="text" id="house_who_answer" name="house_who_answer" value="<?= esc_attr( $house_who_answer ) ?>" style="width:60%;" />
+	</p>
+
 
 
 
 	<script type="text/javascript">
-		jQuery('#house_price_grivna').
+		var USD_p24 = <?= $USD_p24 ?> 
+		var house_price = document.getElementById('house_price');
+		house_price.oninput = function() {
+			document.getElementById('house_price_grivna').value = house_price.value * USD_p24;
+		};
 	</script>
 
 
 	</section>
+
+
+
+
+
 
 <?php
 
@@ -157,7 +202,6 @@ function save_house_meta_main( $post_id ) {
 	if (!current_user_can('edit_post')) {	return;	}
 
 	global $house_fields;
-
 
 	foreach ($house_fields as $house_field) {
 		if ( isset( $_POST[ $house_field ] ) ) {

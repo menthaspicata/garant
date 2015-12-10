@@ -3,43 +3,40 @@
 
 add_action( 'init', 'create_house' );
 add_action( 'init', 'init_house_taxonomies' );
-add_action( 'add_meta_boxes', 'add_house_meta_main' );
+add_action( 'add_meta_boxes', 'add_house_meta' );
 add_action( 'save_post', 'save_house_meta_main' );
-add_action('save_post', 'save_product_metaboxes');
+add_action( 'save_post', 'save_house_meta_galery' );
 
 
 function create_house() { 
     register_post_type( 'house',
         array(
             'labels' => array(
-                'name' => 'Жилье',
-                'singular_name' => 'Жилье',
-                'add_new' => 'Добавить',
-                'add_new_item' => 'Добавить жилье',
-                'edit' => 'Редактировать',
-                'edit_item' => 'Редактировать жилье',
-                'new_item' => 'Новое жилье',
-                'view' => 'Просмотр',
-                'view_item' => 'Посмотреть жилье',
-                'search_items' => 'Искать жилье',
-                'not_found' => 'Жилье не найдено',
-                'not_found_in_trash' => 'Нет жилья!',
-                'parent' => 'parent'
+                'name'                  => 'Жилье',
+                'singular_name'         => 'Жилье',
+                'add_new'               => 'Добавить',
+                'add_new_item'          => 'Добавить жилье',
+                'edit'                  => 'Редактировать',
+                'edit_item'             => 'Редактировать жилье',
+                'new_item'              => 'Новое жилье',
+                'view'                  => 'Просмотр',
+                'view_item'             => 'Посмотреть жилье',
+                'search_items'          => 'Искать жилье',
+                'not_found'             => 'Жилье не найдено',
+                'not_found_in_trash'    => 'Нет жилья!',
+                'parent'                => 'parent'
             ),
             'public' => true,
             'menu_position' => 1,
             'supports' => array( 'title', 'thumbnail'),
-            'taxonomies' => array('house_deal_type', 'house_categories', 'house_location'),
+            'taxonomies' => array('house_deal_type', 'house_categories', 'house_location', 'house_status'),
             //'menu_icon' => plugins_url( 'tat.png', __FILE__ ),
             'has_archive' => true
         )
     );
 }
 
-
-
-
-function add_house_meta_main() {
+function add_house_meta() {
     /**
      *  Основная информация
      */
@@ -69,6 +66,52 @@ function add_house_meta_main() {
 
 
 function init_house_taxonomies() {
+
+    register_taxonomy(
+        'house_status',
+        'house',
+        array(
+            'labels' => array(              
+                'name'              => 'Статус',
+                'singular_name'     => 'Статус',
+                'search_items'      => 'Искать Статус',
+                'all_items'         => 'Все Статусы',
+                'edit_item'         => 'Редактировать Статус',
+                'update_item'       => 'Обновить Статус',
+                'add_new_item'      => 'Добавить новый Статус',
+                'new_item_name'     => 'Новый Статус',
+                'menu_name'         => 'Статус',
+                'search_items' => 'Искать Статус',
+                'not_found' => 'Статус не найден'
+            ),
+            'rewrite' => array( 'slug' => 'house_status' ),
+            //'capabilities' => array(),
+            'hierarchical' => true
+        )
+    );
+
+    register_taxonomy(
+        'house_deal_type',
+        'house',
+        array(
+            'labels' => array(              
+                'name'              => 'Тип сделки',
+                'singular_name'     => 'Тип сделки',
+                'search_items'      => 'Искать Тип Сделки',
+                'all_items'         => 'Все Типы Сделки',
+                'edit_item'         => 'Редактировать Тип Сделки',
+                'update_item'       => 'Обновить Тип Сделки',
+                'add_new_item'      => 'Добавить новый Тип Сделки',
+                'new_item_name'     => 'Новый Тип Сделки',
+                'menu_name'         => 'Тип сделки',
+                'search_items' => 'Искать Тип Сделки',
+                'not_found' => 'Тип Сделки не найден'
+            ),
+            'rewrite' => array( 'slug' => 'house_deal_type' ),
+            //'capabilities' => array(),
+            'hierarchical' => true
+        )
+    );
 
     register_taxonomy(
         'house_location',
@@ -116,27 +159,7 @@ function init_house_taxonomies() {
         )
     );
 
-    register_taxonomy(
-        'house_deal_type',
-        'house',
-        array(
-            'labels' => array(              
-                'name'              => 'Тип Сделки',
-                'singular_name'     => 'Тип Сделки',
-                'search_items'      => 'Искать Тип Сделки',
-                'all_items'         => 'Все Типы Сделки',
-                'edit_item'         => 'Редактировать Тип Сделки',
-                'update_item'       => 'Обновить Тип Сделки',
-                'add_new_item'      => 'Добавить новый Тип Сделки',
-                'new_item_name'     => 'Новый Тип Сделки',
-                'menu_name'         => 'Типы Сделки',
-                'search_items' => 'Искать Тип Сделки',
-                'not_found' => 'Тип Сделки не найден'
-            ),
-            'rewrite' => array( 'slug' => 'house_deal_type' ),
-            //'capabilities' => array(),
-            'hierarchical' => true
-        )
-    );
-}
+    
 
+    
+}

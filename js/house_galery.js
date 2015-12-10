@@ -1,4 +1,4 @@
-(function($) {
+jQuery(function($) {
     $(function() {
         // The click event for the gallery manage button
         $('#manage_gallery').click(function() {
@@ -15,4 +15,4 @@
             });
         });
     });
-})(jQuery);
+});
