@@ -162,7 +162,7 @@ function add_view_house_meta_main( $post ) {
 		var USD_p24 = <?= $USD_p24 ?> 
 		var house_price = document.getElementById('house_price');
 		house_price.oninput = function() {
-			document.getElementById('house_price_grivna').value = house_price.value * USD_p24;
+			document.getElementById('house_price_grivna').value = (house_price.value * USD_p24).toFixed();
 		};
 	</script>
 

@@ -5,9 +5,26 @@
 <section class="houses">
 <ul class="content">
 
-<?php 
+<?php
 
-	$house = new WP_Query ('post_type=house');	
+	$rent_args = array(
+						'post_type' => 'house',
+						'tax_query' => array(
+							'relation' => 'AND',
+							array(
+								'taxonomy' => 'house_deal_type',
+								'field'    => 'slug',
+								'terms'    => 'rent',
+							),
+							array(
+								'taxonomy' => 'house_status',
+								'field'    => 'slug',
+								'terms'    => 'action'
+							),
+						),
+	);
+
+	$house = new WP_Query ( $rent_args );	
 
 	if ( $house->have_posts() ) : while ( $house->have_posts() ) : $house->the_post(); 
 
@@ -19,26 +36,31 @@
 		$house_area_total_front = esc_attr(get_post_meta( $post->ID, '_house_area_total', true ));
 		$house_area_live_front = esc_attr(get_post_meta( $post->ID, '_house_area_live', true ));
 		$house_area_kitchen_front = esc_attr(get_post_meta( $post->ID, '_house_area_kitchen', true ));
+		$house_gallery_front = get_post_meta( $post->ID, 'housegallery', false );
+		$house_location_front = wp_get_post_terms( $post->ID, 'house_location' );
+
 	?>
 	
 		<li class="house-thumb" >
-
-			<h1><?= the_title(); ?></h1>
-				
+			
 				<div class="thumb">
-					<?php the_post_thumbnail( array(150, 150) ); ?> 
+					<?php the_post_thumbnail( array(280, 280) ); ?> 
 				</div>
 
+				<h1><?= the_title(); ?></h1>
+
 				<div class="house-meta">
-					<h4><?= $house_price_front; ?> $</h4>
-					<h4><?= $house_price_UAH_front; ?> грн</h4>
+					<h4><?= $house_price_front; ?> $ / <?= $house_price_UAH_front; ?> грн</h4>
 
 					<h4><?= $house_floor_front ?> й этаж</h4>
 					<h4>Кол-во комнат: <?= $house_rooms_front ?></h4>
 					<h4>Площадь: <?= $house_area_total_front .' / '. $house_area_live_front .' / '. $house_area_kitchen_front ?></h4>
 
-				</div>			
+					<h4>Район: <?= $house_location_front[0]->name ?></h4>
 
+					<a href="<?= wp_get_shortlink(); ?>">подробнее</a>
+
+				</div>
 		</li>		
 
 		

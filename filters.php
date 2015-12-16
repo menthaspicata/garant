@@ -1,10 +1,10 @@
 <section class="house_filters_chose">
-	<div>
-		<a href="">Аренда</a>
+	<div class="active">
+		<a href="/garant/">Аренда</a>
 	</div>
 
 	<div>
-		<a href="">Продажа</a>
+		<a href="/garant/?page_id=132">Продажа</a>
 	</div>
 </section>
 	
@@ -12,12 +12,34 @@
 
 <section class="house_filters">
 
-<form method="post">
+<form method="post" action="/search/">
 		
 
 	
 
 
+
+<?php 
+
+	
+
+	/**
+	 * 	комнаты
+	 */
+	
+	?>
+
+	<label class="large_label">Цена ($):<br>
+		<input type="text" placeholder="От"> <input type="text" placeholder="До">
+	</label>
+
+	<label class="large_label label_rooms">Комнат:<br>
+		<input type="text" placeholder="От" > <input type="text" placeholder="До">
+	</label>
+
+	<label class="large_label">Площадь (m<sup>2</sup>):<br>
+		<input type="text" placeholder="От"> <input type="text" placeholder="До">
+	</label>
 
 <?php 
 
@@ -53,26 +75,9 @@
 		echo '</label>';
 	}
 
-	/**
-	 * 	комнаты
-	 */
-	
-	?>
+?>
 
-	<label class="large_label">Цена<br>
-		От: <input type="text"> До: <input type="text">
-	</label>
-		
-
-
-
-		<label class="large_label">Количество комнат<br>
-			От: <input type="text"> До: <input type="text">
-		</label>
-
-		<label class="large_label">Площадь<br>
-			От: <input type="text"> До: <input type="text">
-		</label>
+	<input class="search_house" type="submit" value="Искать">
 
 
 	

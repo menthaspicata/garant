@@ -6,35 +6,25 @@
 
 function add_view_house_meta_galery( $post ) {
 
-	//$ids = get_post_meta( $post->ID, '_house_meta_galery', true );
-	//$ids = json_decode(base64_decode($ids[0]));
+	wp_nonce_field( 'save_house_meta_galery', 'house_meta_galery_nonce' );
 
-	// Here we get the current images ids of the gallery
-	$values = get_post_custom($post->ID);
-	if(isset($values['_house_meta_galery'])) {
-		// The json decode and base64 decode return an array of image ids
-		$ids = json_decode(base64_decode($values['_house_meta_galery'][0]));
-	}
-	else {
-		$ids = array();
-	}
+	$field_value = get_post_meta( $post->ID, 'housegallery', false );
 
+	?>
 
-	//print_r($ids);
-	wp_nonce_field('save_house_meta_galery', 'house_meta_galery_nonce'); // Security
+	<p>Внимание внимание! Не добавляйте в редактор ничего кроме изображений. Сами изображения следует добавлять так:<br>
+		<ol>
+			<li>Нажмите кнопку добавить медиафайл</li>
+			<li>В меню слева выберите создать галерею</li>
+			<li>Загрузите и выберите все нужные для данного объекта файлы и нажмите создать галерею</li>
+			<li>Нажмите вставить галерею</li>		
+		</ol>
+	</p>
+	<hr>
 
-	// Here we store the image ids which are used when saving the product
-	$html = '<input id="house_gallery_ids" type="hidden" name="house_gallery_ids" value="'.$cs_ids. '" />';
-	// A button which we will bind to later on in JavaScript
-	$html .= '<input class="button button-primary button-large" id="manage_gallery" title="Manage gallery" type="button" value="Редактировать галерею" />';
+	<?php
 
-
-	// Implode the array to a comma separated list
-	$cs_ids = implode(",", $ids);   
-	// We display the gallery
-	$html  .= do_shortcode('[gallery ids="'.$cs_ids.'"]');
-
-	echo $html;
+	wp_editor( $field_value[0], 'housegalleryid' );
 }
 
 /**
@@ -55,9 +45,12 @@ function save_house_meta_galery($post_id) {
 
 
 	// Check if data is in post
-	if (isset($_POST['house_gallery_ids'])) {
-		// Encode so it can be stored an retrieved properly
-		$encode = base64_encode(json_encode(explode(',',$_POST['house_gallery_ids'])));
-		update_post_meta($post_id, '_house_meta_galery', $encode);
+	if (isset($_POST['housegalleryid'])) {
+
+
+		update_post_meta($post_id, 
+								'housegallery', 
+								 $_POST[ 'housegalleryid' ]
+								);
 	}
 }
