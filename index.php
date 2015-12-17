@@ -1,30 +1,14 @@
 <?php get_header(); ?>
 
+
+<?php require 'query.php'; ?>
 <?php require 'filters.php'; ?>
+
 
 <section class="houses">
 <ul class="content">
 
-<?php
-
-	$rent_args = array(
-						'post_type' => 'house',
-						'tax_query' => array(
-							'relation' => 'AND',
-							array(
-								'taxonomy' => 'house_deal_type',
-								'field'    => 'slug',
-								'terms'    => 'rent',
-							),
-							array(
-								'taxonomy' => 'house_status',
-								'field'    => 'slug',
-								'terms'    => 'action'
-							),
-						),
-	);
-
-	$house = new WP_Query ( $rent_args );	
+<?php		
 
 	if ( $house->have_posts() ) : while ( $house->have_posts() ) : $house->the_post(); 
 

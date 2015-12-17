@@ -19,6 +19,9 @@ foreach ($courses as $course) {
 	}
 }
 
+const RENT_PAGE = 'rent';
+const SALE_PAGE = 'sale';
+
 
 require 'functions/theme_settings.php';
 require 'functions/add_scripts.php';
