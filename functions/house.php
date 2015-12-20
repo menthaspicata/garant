@@ -12,24 +12,24 @@ function create_house() {
     register_post_type( 'house',
         array(
             'labels' => array(
-                'name'                  => 'Жилье',
-                'singular_name'         => 'Жилье',
+                'name'                  => 'Недвижимость',
+                'singular_name'         => 'Недвижимость',
                 'add_new'               => 'Добавить',
-                'add_new_item'          => 'Добавить жилье',
+                'add_new_item'          => 'Добавить Недвижимость',
                 'edit'                  => 'Редактировать',
-                'edit_item'             => 'Редактировать жилье',
-                'new_item'              => 'Новое жилье',
+                'edit_item'             => 'Редактировать Недвижимость',
+                'new_item'              => 'Новая Недвижимость',
                 'view'                  => 'Просмотр',
-                'view_item'             => 'Посмотреть жилье',
-                'search_items'          => 'Искать жилье',
-                'not_found'             => 'Жилье не найдено',
-                'not_found_in_trash'    => 'Нет жилья!',
+                'view_item'             => 'Посмотреть Недвижимость',
+                'search_items'          => 'Искать Недвижимость',
+                'not_found'             => 'Недвижимость не найдена',
+                'not_found_in_trash'    => 'Нет Недвижимости!',
                 'parent'                => 'parent'
             ),
             'public' => true,
             'menu_position' => 1,
             'supports' => array( 'title', 'thumbnail'),
-            'taxonomies' => array('house_deal_type', 'house_categories', 'house_location', 'house_status'),
+            'taxonomies' => array('house_deal_type', 'house_categories', 'house_location', 'house_status', 'property_type', 'house_heating', 'house_direction', 'house_build_type'),
             //'menu_icon' => plugins_url( 'tat.png', __FILE__ ),
             'has_archive' => true
         )
@@ -85,6 +85,98 @@ function init_house_taxonomies() {
                 'not_found' => 'Статус не найден'
             ),
             'rewrite' => array( 'slug' => 'house_status' ),
+            //'capabilities' => array(),
+            'hierarchical' => true
+        )
+    );
+
+    register_taxonomy(
+        'house_direction',
+        'house',
+        array(
+            'labels' => array(              
+                'name'              => 'Местоположение',
+                'singular_name'     => 'Местоположение',
+                'search_items'      => 'Искать Местоположение',
+                'all_items'         => 'Все Местоположения',
+                'edit_item'         => 'Редактировать Местоположение',
+                'update_item'       => 'Обновить Местоположение',
+                'add_new_item'      => 'Добавить новое Местоположение',
+                'new_item_name'     => 'Новое Местоположение',
+                'menu_name'         => 'Местоположение',
+                'search_items' => 'Искать Местоположение',
+                'not_found' => 'Местоположение не найдено'
+            ),
+            'rewrite' => array( 'slug' => 'house_direction' ),
+            //'capabilities' => array(),
+            'hierarchical' => true
+        )
+    );
+
+    register_taxonomy(
+        'house_heating',
+        'house',
+        array(
+            'labels' => array(              
+                'name'              => 'Тип Отопления',
+                'singular_name'     => 'Тип Отопления',
+                'search_items'      => 'Искать Тип Отопления',
+                'all_items'         => 'Все Типы Отопления',
+                'edit_item'         => 'Редактировать Тип Отопления',
+                'update_item'       => 'Обновить Тип Отопления',
+                'add_new_item'      => 'Добавить новый Тип Отопления',
+                'new_item_name'     => 'Новый Тип Отопления',
+                'menu_name'         => 'Тип Отопления',
+                'search_items' => 'Искать Тип Отопления',
+                'not_found' => 'Тип Отопления не найден'
+            ),
+            'rewrite' => array( 'slug' => 'house_heating' ),
+            //'capabilities' => array(),
+            'hierarchical' => true
+        )
+    );
+
+    register_taxonomy(
+        'property_type',
+        'house',
+        array(
+            'labels' => array(              
+                'name'              => 'Тип недвижимости',
+                'singular_name'     => 'Тип недвижимости',
+                'search_items'      => 'Искать Тип недвижимости',
+                'all_items'         => 'Все Типы недвижимости',
+                'edit_item'         => 'Редактировать Тип недвижимости',
+                'update_item'       => 'Обновить Тип недвижимости',
+                'add_new_item'      => 'Добавить новый Тип недвижимости',
+                'new_item_name'     => 'Новый Тип недвижимости',
+                'menu_name'         => 'Тип недвижимости',
+                'search_items' => 'Искать Тип недвижимости',
+                'not_found' => 'Тип недвижимости не найден'
+            ),
+            'rewrite' => array( 'slug' => 'property_type' ),
+            //'capabilities' => array(),
+            'hierarchical' => true
+        )
+    );
+
+    register_taxonomy(
+        'house_build_type',
+        'house',
+        array(
+            'labels' => array(              
+                'name'              => 'Тип постройки',
+                'singular_name'     => 'Тип постройки',
+                'search_items'      => 'Искать Тип постройки',
+                'all_items'         => 'Все Типы постройки',
+                'edit_item'         => 'Редактировать Тип постройки',
+                'update_item'       => 'Обновить Тип постройки',
+                'add_new_item'      => 'Добавить новый Тип постройки',
+                'new_item_name'     => 'Новый Тип постройки',
+                'menu_name'         => 'Тип постройки',
+                'search_items' => 'Искать Тип постройки',
+                'not_found' => 'Тип постройки не найден'
+            ),
+            'rewrite' => array( 'slug' => 'house_build_type' ),
             //'capabilities' => array(),
             'hierarchical' => true
         )

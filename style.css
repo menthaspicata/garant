@@ -41,7 +41,11 @@ div
  */
 body
 {
-    background: rgba(253, 236, 109, .3);
+    -background: rgba(253, 236, 109, .3);
+    -background: url('img/bg2.jpg');
+    background: url('img/GEJ6ML9NHQ.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /**
@@ -86,9 +90,6 @@ a:hover
     text-decoration: underline;
 }
 
-/**
- * Clearfix
- */
 aside
 {
     margin: 15px; 
@@ -102,49 +103,58 @@ aside
 }
 
 .header_nav_list {
-    background: #313567;
+    background: #1D4991;
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 
 .header_nav_list a {
     color: #e6e6e6;
+    text-decoration: none;
+}
+
+.header_nav_list a:hover {
     text-decoration: underline;
 }
 
 header.list-header
 {
-    margin-bottom: 20px;
-    padding: 30px 0;
+    padding: 15px 0;
 
     text-align: center;
 
-    background: #313567;
+    background: #FEF9D3;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
+}
+
+header.list-header:after {
+    content: '';
+    display: block;
+    clear: both;
 }
 header.list-header h1
 {
     font-size: 40px;
 
-    display: inline-block;
-
     width: 30%;
+    float: left;
 
     text-align: left; 
 
-    color: #e6e6e6;
-    background: #313567;
+    color: #4d4d4d;
+    background: #FEF9D3;
 }
 header.list-header .header_button
 {
     display: inline-block;
 	height: 50px;
 	padding: 10px;
-	border: 2px solid #e3712c;
     width: 20%;
+    border: none;
     cursor: pointer;
-	background: #e3712c;
+	background: #1D4991;
+    margin-top: 45px;
     
     font-size: 1em;
-    font-weight: bold;
     color: #e6e6e6;
     text-transform: uppercase;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 
@@ -156,18 +166,40 @@ header.list-header .header_contacts
     -display: inline-block;
 	float: right;
     width: 30%;
-	color: #fff;
+	color: #4d4d4d;
     text-align: center;
+    margin-top: 55px;
+}
+header.list-header .header_contacts li {
+    font-size: 1.1em;
 }
 .header_nav
 {
     text-align: center;
+    border-bottom: 1px solid #1D4991;
 }
 .header_nav li
 {
     display: inline-block;
     margin: 5px 30px;
 }
+
+
+
+
+
+
+/**
+ *              СЕТКА
+ */
+
+
+section.houses {
+    background: #FEF9D3;
+    padding-top: 15px;
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
+}
+
 
 section.houses ul.content
 {
@@ -227,6 +259,10 @@ section.houses .house-meta
 {
     margin-left: 15px;
 }
+section.houses .house-meta a {
+    text-decoration: underline;
+    color: #1D4991;
+}
 section.houses .house-meta h1
 {
     font-size: 20px;
@@ -241,18 +277,33 @@ section.houses .house-meta h4
     color: #4d4d4d;
 }
 
+
+
+
+
+
+/**
+ *              ФИЛЬТРЫ
+ */
+
 section.house_filters_chose
 {
     text-align: center;
+
+    padding: 10px 0;
+
 }
+
+
+
 section.house_filters_chose div
 {
     display: inline-block;
-
+    background: #FEF9D3;
     width: 20%;
-    margin: 5px 0;
-    border: 2px solid #313567; 
-    padding: 10px 5px;
+    margin: 5px 80px 5px 0;
+    border: 2px solid #1D4991; 
+    
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     -ms-transition: 0.2s;
@@ -264,20 +315,17 @@ section.house_filters_chose div
     
 }
 
- {
-    background: #313567;
-}
-
-section.house_filters_chose div:first-child {
-    margin-right: 200px;
+section.house_filters_chose div:last-child {
+    margin-right: 0;
 }
 
 section.house_filters_chose div.active,
 section.house_filters_chose div:hover {
-    background: #313567;    
+    background: #1D4991;    
 }
 
 section.house_filters_chose div a {
+    padding: 10px 5px;
     display: block;
     text-transform: uppercase;
     font-size: 19px;
@@ -292,10 +340,10 @@ section.house_filters_chose div:hover a {
 
 section.house_filters
 {
-    margin: 20px 0;
+    margin: 0 0 20px;
     padding: 20px 15px 0;
     text-align: center;
-    background: #313567;
+    background: #FEF9D3;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 section.house_filters:after
@@ -305,35 +353,45 @@ section.house_filters:after
 
     content: '';
 }
-section.house_filters label
+section.house_filters .filter-element
 {
     font-size: 1.1em;
-
     display: inline-block;
     vertical-align: top;
+    width: 33%;
+    text-align: left;
+    color: #4d4d4d;
 
-    width: 25%;
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-
-    text-align: left; 
-
-    color: #fff;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    box-sizing: border-box;
 }
+
+section.house_filters .filter-element label {
+    display: inline-block;
+    width: 100px;
+    vertical-align: middle;
+}
+
 section.house_filters select
 {
     display: inline-block;
 
     box-sizing: border-box;
-    margin-top: 10px; 
+    margin-top: 10px;
+    margin-left: 10px;
     padding: 3px;
 
     border: 3px solid #ccc;
-    font-size: 1em;
+    font-size: 14px;
+    width: 150px;
 }
+
+
 section.house_filters input
 {
-    font-size: 1em;
+    font-size: 15px;
 
     display: inline-block;
 
@@ -344,28 +402,25 @@ section.house_filters input
 
     border: 3px solid #ccc;
 }
-section.house_filters label.large_label
+
+section.house_filters .large_label input
 {
-    width: 30%;
+    width: 28%;
 }
-section.house_filters label.large_label input
+section.house_filters  input:first-child
 {
-    width: 40%;
+    margin-left: 10px;
 }
-section.house_filters label.large_label input:first-child
-{
-    margin-right: 5%;
-}
-section.house_filters label.large_label:last-child
-{
-    margin-left: 5%;
-}
+
 
 section.house_filters input.search_house {
 	display: inline-block;
 	width: 25%;
-	background: #e3712c;
-	border-color: #e3712c;
+    margin-bottom: 20px;
+	background: #1D4991;
+	border-color: #1D4991;
 	color: #e6e6e6;
+    padding: 10px 5px;
 	box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
+    cursor: pointer;
 }

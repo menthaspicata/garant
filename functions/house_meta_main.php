@@ -7,22 +7,22 @@
  */
 
 $house_fields = array(
-	"house_price",				//цена
-	"house_adress",			//улица
-	"house_adress_number",	//номер дома
-	"house_adress_lat",		//широта
-	"house_adress_long",		//долгота
-	"house_floor",				//этаж
-	"house_rooms",				//количество комнат
-	"house_description",		//описание
-	"house_all_floor",		//этажей в доме
-	"house_area_total",		//общая площадь
-	"house_area_live",		//жилая площадь
-	"house_area_kitchen",	//площадь кухни
-	"house_type",				//тип постройки
-	"house_base",				//фундамент
-	"house_phone",				//телефон владельца
-	"house_who_answer"		//имя владельца
+	"house_price",					//цена
+	"house_adress",				//улица
+	"house_adress_number",		//номер дома
+	"house_adress_apartment", 	//Номер квартиры
+	"house_adress_lat",			//широта
+	"house_adress_long",			//долгота
+	"house_floor",					//этаж
+	"house_rooms",					//количество комнат
+	"house_description",			//описание
+	"house_all_floor",			//этажей в доме
+	"house_area_total",			//общая площадь
+	"house_area_live",			//жилая площадь
+	"house_area_kitchen",		//площадь кухни
+	"house_type",					//тип постройки
+	"house_phone",					//телефон владельца
+	"house_who_answer"			//имя владельца
 );
 
 
@@ -76,6 +76,11 @@ function add_view_house_meta_main( $post ) {
 	<p>
 		<label for="house_adress_number">Номер дома:</label>
 		<input type="text" id="house_adress_number" name="house_adress_number" value="<?= esc_attr( $house_adress_number ) ?>" size="8" />
+	</p>
+
+	<p>
+		<label for="house_adress_apartment">Номер квартиры:</label>
+		<input type="text" id="house_adress_apartment" name="house_adress_apartment" value="<?= esc_attr( $house_adress_apartment ) ?>" size="8" />
 	</p>
 
 	<p>
@@ -138,10 +143,6 @@ function add_view_house_meta_main( $post ) {
 		<label for="house_type">Тип постройки:</label>
 		<input type="text" id="house_type" name="house_type" value="<?= esc_attr( $house_type ) ?>" style="width:60%;" />		
 	</p>
-	<p>
-		<label for="house_base">Фундамент:</label>
-		<input type="text" id="house_base" name="house_base" value="<?= esc_attr( $house_base ) ?>" style="width:60%;" />	
-	</p>
 
 	<hr>
 	<h2>Информация о владельце</h2>
@@ -151,7 +152,7 @@ function add_view_house_meta_main( $post ) {
 	</p>
 
 	<p>
-		<label for="house_who_answer">Кого спросить:</label>
+		<label for="house_who_answer">ФИО:</label>
 		<input type="text" id="house_who_answer" name="house_who_answer" value="<?= esc_attr( $house_who_answer ) ?>" style="width:60%;" />
 	</p>
 
