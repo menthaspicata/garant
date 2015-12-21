@@ -122,7 +122,8 @@ header.list-header
 
     text-align: center;
 
-    background: #FEF9D3;
+    -background: #FEF9D3;
+    background: #f2f2f2;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 
@@ -141,7 +142,7 @@ header.list-header h1
     text-align: left; 
 
     color: #4d4d4d;
-    background: #FEF9D3;
+    background: #f2f2f2;
 }
 header.list-header .header_button
 {
@@ -151,16 +152,30 @@ header.list-header .header_button
     width: 20%;
     border: none;
     cursor: pointer;
-	background: #1D4991;
+    border: 2px solid #1D4991;
+	background: #f2f2f2;
     margin-top: 45px;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    
     
     font-size: 1em;
-    color: #e6e6e6;
+    color: #4d4d4d;
+    
     text-transform: uppercase;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 
                 0 3px 1px -2px rgba(49, 53, 103, .2), 
                 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
+
+header.list-header .header_button:hover {
+    background: #1D4991;
+    color: #e6e6e6;
+}
+
 header.list-header .header_contacts
 {
     -display: inline-block;
@@ -195,7 +210,7 @@ header.list-header .header_contacts li {
 
 
 section.houses {
-    background: #FEF9D3;
+    background: #f2f2f2;
     padding-top: 15px;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
@@ -206,76 +221,129 @@ section.houses ul.content
     position: relative;
 }
 
-section.houses li.house-thumb
-{
+section.houses li.house-thumb{
     float: left;
     overflow: hidden;
-
     box-sizing: border-box;
-    width: 320px;
-    min-height: 350px;
-    margin-right: 32px;
-    margin-bottom: 20px;
-    padding: 10px;
-
+    width: 470px;
+    margin-bottom: 40px;
     transition: .2s;
-
     border: 1px solid #313567; 
     background: #f2f2f2;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
-section.houses li.house-thumb:after
-{
+section.houses li.house-thumb:after{
     display: table;
     clear: both; 
-
     content: '';
 }
-section.houses li.house-thumb a:hover
-{
+section.houses li.house-thumb a:hover{
     text-decoration: none;
 }
-section.houses li.house-thumb:hover
-{
-    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 
-                0 3px 1px -2px rgba(49, 53, 103, .2), 
-                0 1px 5px 0 rgba(49, 53, 103, .12);
-}
-section.houses li.house-thumb:nth-child(3n)
-{
-    margin-right: 0;
+
+section.houses .house-thumb h1{
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    font-size: 1.7em;
+    padding-left: 10px;
 }
 
 section.houses .thumb
 {
-    text-align: center;
+	float: left;
+	padding-left: 10px;
 }
-section.houses .thumb img
-{
-    border: 2px solid #313567;
+section.houses .thumb img {
+	max-width: 270px;
 }
 
-section.houses .house-meta
-{
-    margin-left: 15px;
+section.houses .house-price,
+.house-content .house-price {
+	float: left;
+	padding: 15px;
+	background: #1D4991;
+	color: #e6e6e6;
+	width: 150px;
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	line-height: 1.1em;
 }
-section.houses .house-meta a {
+
+section.houses .house-description {
+	float: left;
+	width: 170px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+
+section.houses .house-description a {
     text-decoration: underline;
     color: #1D4991;
+    float: right;
+    display: block;
+    margin-top: 5px;
 }
-section.houses .house-meta h1
-{
-    font-size: 20px;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    color: #1a1a1a;
+section.houses .house-meta {
+	float: left;
+	width: 100%;
+	margin-top: 20px;
+	background: #ccc;
+	border-top: 1px solid #313567;
 }
-section.houses .house-meta h4
-{
+
+section.houses .house-meta span {
     color: #4d4d4d;
+    display: inline-block;
+    padding: 5px;
+    margin: 0;
+    border-right: 1px solid #313567;
 }
+
+
+
+
+
+
+/**
+ *              ДОМ
+ */
+
+
+.house-content {
+	background: #f2f2f2;
+	margin-top: 15px;
+	padding: 10px 30px;
+}
+
+.house-content:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+
+.house-content h1 {
+	text-align: center;
+	font-size: 2.5em;
+	margin-bottom: 15px;
+	color: #4d4d4d;
+}
+
+.house-content .thumb {
+	max-width: 600px;
+	float: left;
+}
+
+.house-content .house-meta,
+.house-content .house-description {
+	width: 400px;
+	float: left;
+	margin-left: 20px;
+}
+
+
+
 
 
 
@@ -286,20 +354,19 @@ section.houses .house-meta h4
  *              ФИЛЬТРЫ
  */
 
+
+
+
 section.house_filters_chose
 {
     text-align: center;
-
     padding: 10px 0;
-
 }
-
-
 
 section.house_filters_chose div
 {
     display: inline-block;
-    background: #FEF9D3;
+    background: #f2f2f2;
     width: 20%;
     margin: 5px 80px 5px 0;
     border: 2px solid #1D4991; 
@@ -343,7 +410,8 @@ section.house_filters
     margin: 0 0 20px;
     padding: 20px 15px 0;
     text-align: center;
-    background: #FEF9D3;
+    background: #f2f2f2;
+    border: 1px solid #1D4991;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 section.house_filters:after
@@ -383,7 +451,7 @@ section.house_filters select
     margin-left: 10px;
     padding: 3px;
 
-    border: 3px solid #ccc;
+    border: 1px solid #1D4991;
     font-size: 14px;
     width: 150px;
 }
@@ -400,7 +468,7 @@ section.house_filters input
     margin-top: 10px;
     padding: 3px;
 
-    border: 3px solid #ccc;
+    border: 1px solid #1D4991;
 }
 
 section.house_filters .large_label input
@@ -415,12 +483,12 @@ section.house_filters  input:first-child
 
 section.house_filters input.search_house {
 	display: inline-block;
-	width: 25%;
+	width: 20%;
     margin-bottom: 20px;
 	background: #1D4991;
 	border-color: #1D4991;
 	color: #e6e6e6;
-    padding: 10px 5px;
+    padding: 5px;
 	box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
     cursor: pointer;
 }

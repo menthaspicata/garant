@@ -37,7 +37,8 @@ wp_nav_menu( array(
 ?>
 	
 	<header class="list-header">
-		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1>
+	<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1></a>
 
 		<button class="header_button">связь с риелтором</button>
 

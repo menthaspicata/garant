@@ -11,7 +11,7 @@
 <section class="houses">
 <ul class="content">
 
-<?php 
+<?php		
 
 	if ( $house->have_posts() ) : while ( $house->have_posts() ) : $house->the_post(); 
 
@@ -26,28 +26,48 @@
 		$house_gallery_front = get_post_meta( $post->ID, 'housegallery', false );
 		$house_location_front = wp_get_post_terms( $post->ID, 'house_location' );
 
+		$house_description = esc_attr(get_post_meta( $post->ID, '_house_description', true ));
+
+		if ( !empty($house_description) ) {
+			$house_description = substr($house_description, 0, 80);
+			$house_description .= '...';
+		}
+
+		
 	?>
 	
 		<li class="house-thumb" >
+
+			<h1><?= the_title(); ?></h1>
+		
+			<div class="thumb">
+				<?php the_post_thumbnail( array(250, 250) ); ?> 
+			</div>
+
+			<div class="house-price">
+				<?= $house_price_front; ?> $ <br> <?= $house_price_UAH_front; ?> грн
+			</div>
+
+			<div class="house-description">
+				<?= $house_description; ?>
+
+				<a href="<?= wp_get_shortlink(); ?>">подробнее</a>
+			</div>
+
 			
-				<div class="thumb">
-					<?php the_post_thumbnail( array(280, 280) ); ?> 
-				</div>
 
-				<h1><?= the_title(); ?></h1>
+			<div class="house-meta">
+				
 
-				<div class="house-meta">
-					<h4><?= $house_price_front; ?> $ / <?= $house_price_UAH_front; ?> грн</h4>
+				<span><?= $house_floor_front ?> й этаж</span>
+				<span>Комнат: <?= $house_rooms_front ?></span>
 
-					<h4><?= $house_floor_front ?> й этаж</h4>
-					<h4>Кол-во комнат: <?= $house_rooms_front ?></h4>
-					<h4>Площадь: <?= $house_area_total_front .' / '. $house_area_live_front .' / '. $house_area_kitchen_front ?></h4>
 
-					<h4>Район: <?= $house_location_front[0]->name ?></h4>
+				<span>Район: <?= $house_location_front[0]->name ?></span>
 
-					<a href="<?= wp_get_shortlink(); ?>">подробнее</a>
+				
 
-				</div>
+			</div>
 		</li>		
 
 		

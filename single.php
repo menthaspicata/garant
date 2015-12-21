@@ -18,19 +18,23 @@
 
 		$house_location_front = wp_get_post_terms( $post->ID, 'house_location' );
 
+		$house_description = esc_attr(get_post_meta( $post->ID, '_house_description', true ));
 
 	?>
 	
-		<li class="house-thumb" >
-			
-				<div class="thumb">
-					<?php the_post_thumbnail( array(280, 280) ); ?> 
-				</div>
+		<section class="house-content" >
 
 				<h1><?= the_title(); ?></h1>
+			
+				<div class="thumb">
+					<?php the_post_thumbnail( 'full' ); ?> 
+				</div>
+
+				<div class="house-price">
+					<?= $house_price_front; ?> $ <br> <?= $house_price_UAH_front; ?> грн
+				</div>			
 
 				<div class="house-meta">
-					<h4><?= $house_price_front; ?> $ / <?= $house_price_UAH_front; ?> грн</h4>
 
 					<h4><?= $house_floor_front ?> й этаж</h4>
 					<h4>Кол-во комнат: <?= $house_rooms_front ?></h4>
@@ -39,7 +43,13 @@
 					<h4>Район: <?= $house_location_front[0]->name ?></h4>
 
 				</div>
-		</li>		
+
+				<div class="house-description">
+					<?= $house_description; ?>
+				</div>
+
+				<?php  do_shortcode( $house_gallery_front ); ?>
+		</section>		
 
 		
 

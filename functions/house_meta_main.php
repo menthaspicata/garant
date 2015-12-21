@@ -20,7 +20,6 @@ $house_fields = array(
 	"house_area_total",			//общая площадь
 	"house_area_live",			//жилая площадь
 	"house_area_kitchen",		//площадь кухни
-	"house_type",					//тип постройки
 	"house_phone",					//телефон владельца
 	"house_who_answer"			//имя владельца
 );
@@ -138,10 +137,6 @@ function add_view_house_meta_main( $post ) {
 	<p>
 		<label for="house_description">Описание жилья:</label>
 		<textarea type="text" id="house_description" name="house_description" style="width:60%;" rows="7"><?= esc_attr( $house_description ) ?></textarea>		
-	</p>
-	<p>
-		<label for="house_type">Тип постройки:</label>
-		<input type="text" id="house_type" name="house_type" value="<?= esc_attr( $house_type ) ?>" style="width:60%;" />		
 	</p>
 
 	<hr>
