@@ -124,6 +124,7 @@ header.list-header
 
     -background: #FEF9D3;
     background: #f2f2f2;
+    border: 1px solid #313567;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 
@@ -211,6 +212,8 @@ header.list-header .header_contacts li {
 
 section.houses {
     background: #f2f2f2;
+    border: 1px solid #313567;
+
     padding-top: 15px;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
@@ -228,7 +231,8 @@ section.houses li.house-thumb{
     width: 470px;
     margin-bottom: 40px;
     transition: .2s;
-    border: 1px solid #313567; 
+    border: 1px solid #ccc; 
+    border-bottom: none;
     background: #f2f2f2;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
