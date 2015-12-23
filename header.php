@@ -19,19 +19,19 @@
 <?php
 
 wp_nav_menu( array(
-						'menu'            => 'header_menu',
-						'container'       => 'nav',
-						'container_class' => 'header_nav',
-						'menu_class'      => 'header_nav_list',
-						'echo'            => true,
-						'fallback_cb'     => 'false',
-						'before'          => '',
-						'after'           => '',
-						'link_before'     => '',
-						'link_after'      => '',
-						'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-						'depth'           => 0
-					) 
+	'menu'            => 'header_menu',
+	'container'       => 'nav',
+	'container_class' => 'header_nav',
+	'menu_class'      => 'header_nav_list',
+	'echo'            => true,
+	'fallback_cb'     => 'false',
+	'before'          => '',
+	'after'           => '',
+	'link_before'     => '',
+	'link_after'      => '',
+	'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+	'depth'           => 0
+) 
 );
 
 ?>
@@ -40,10 +40,9 @@ wp_nav_menu( array(
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1></a>
 
-		<button class="header_button">связь с риелтором</button>
+		<button class="header_button">обратная связь</button>
 
 		<ul class="header_contacts">
-			<li>+380000000000</li>
-			<li>+380000000000</li>
+			<li>+380509816278</li>
 		</ul>
 	</header>

@@ -26,7 +26,7 @@ $house_args = array(
 							array(
 								'taxonomy' => 'house_status',
 								'field'    => 'slug',
-								'terms'    => 'action'
+								'terms'    => 'active'
 							),
 						),
 
@@ -117,8 +117,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['house_filters_submit'
 
 
 $house = new WP_Query ( $house_args );
-
-
 
 
 ?>

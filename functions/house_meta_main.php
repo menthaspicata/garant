@@ -1,3 +1,12 @@
+<style type="text/css">
+	#house_meta_wrapp label {
+		min-width: 150px;
+		display: inline-block;
+		margin-bottom: 10px;
+		vertical-align: top;
+	}
+</style>
+
 <?php
 
 /**
@@ -21,8 +30,42 @@ $house_fields = array(
 	"house_area_live",			//жилая площадь
 	"house_area_kitchen",		//площадь кухни
 	"house_phone",					//телефон владельца
-	"house_who_answer"			//имя владельца
+	"house_who_answer",			//имя владельца
+	"house_agent"					//агент
 );
+
+/**
+ * 	save main meta box
+ */
+function save_house_meta_main( $post_id ) {
+
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['house_meta_main_nonce'] ) ) {	return;	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['house_meta_main_nonce'], 'save_house_meta_main' ) ) {	return;	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {	return;	}
+
+	if (!current_user_can('edit_post')) {	return;	}
+
+	global $house_fields;
+
+	foreach ($house_fields as $house_field) {
+		if ( isset( $_POST[ $house_field ] ) ) {
+			update_post_meta( $post_id, 
+									'_' . $house_field, 
+									sanitize_text_field( $_POST[ $house_field ]) 
+									);
+		}
+	}
+}
 
 
 /**
@@ -48,24 +91,39 @@ function add_view_house_meta_main( $post ) {
 
 	?>
 
-
-
-
-
-	<style type="text/css">
-		#house_meta_wrapp label {
-			min-width: 150px;
-			display: inline-block;
-			margin-bottom: 10px;
-			vertical-align: top;
-		}
-	</style>
-
-	
-
 	<section id="house_meta_wrapp">
 
-	
+	<p>
+		<label for="house_agent">Агент:</label>
+		<?php 
+
+			/**
+			 * 	агенты
+			 */
+		
+			$arents = get_users();
+
+			if ( ! empty( $arents ) && ! is_wp_error( $arents ) ){
+			
+				echo '<select class="house_location" name="house_agent" >';
+
+					foreach ( $arents as $arent ) {
+
+						echo '<option value="' . $arent->id  . '"';
+
+						if ( $arent->id  == $house_agent ) {
+							echo ' selected="selected"'; 
+						}
+						echo '>' . $arent->display_name;
+						echo '</option>';
+					}
+
+				echo '</select>';
+				
+			}
+		?>
+
+	</p>
 		
 	<p>
 		<label for="house_adress">Улица:</label>
@@ -176,35 +234,4 @@ function add_view_house_meta_main( $post ) {
 
 
 
-/**
- * 	save main meta box
- */
-function save_house_meta_main( $post_id ) {
 
-	/*
-	 * We need to verify this came from our screen and with proper authorization,
-	 * because the save_post action can be triggered at other times.
-	 */
-
-	// Check if our nonce is set.
-	if ( ! isset( $_POST['house_meta_main_nonce'] ) ) {	return;	}
-
-	// Verify that the nonce is valid.
-	if ( ! wp_verify_nonce( $_POST['house_meta_main_nonce'], 'save_house_meta_main' ) ) {	return;	}
-
-	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {	return;	}
-
-	if (!current_user_can('edit_post')) {	return;	}
-
-	global $house_fields;
-
-	foreach ($house_fields as $house_field) {
-		if ( isset( $_POST[ $house_field ] ) ) {
-			update_post_meta( $post_id, 
-									'_' . $house_field, 
-									sanitize_text_field( $_POST[ $house_field ]) 
-									);
-		}
-	}
-}

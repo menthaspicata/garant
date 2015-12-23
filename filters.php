@@ -1,15 +1,15 @@
 <section class="house_filters_chose">
 
 	<div <?php if ( is_home() ) echo 'class="active"'; ?> >
-		<a href="/garant/">Аренда</a>
+		<a href="/">Аренда</a>
 	</div>
 
 	<div <?php if ( is_page_template( 'sale.php' ) ) echo 'class="active"'; ?> >
-		<a href="/garant/?page_id=132">Продажа</a>
+		<a href="/sale/">Продажа</a>
 	</div>
 
 	<div <?php if ( is_page_template( 'change.php' ) ) echo 'class="active"'; ?> >
-		<a href="/garant/?page_id=182">Обмен</a>
+		<a href="/trade/">Обмен</a>
 	</div>
 
 </section>

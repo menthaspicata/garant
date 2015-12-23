@@ -25,6 +25,10 @@
 
 		$house_description = esc_attr(get_post_meta( $post->ID, '_house_description', true ));
 
+		$house_agent = esc_attr(get_post_meta( $post->ID, '_house_agent', true ));
+
+		$house_agent = get_user_by( 'id', $house_agent );
+
 		if ( !empty($house_description) ) {
 			$house_description = substr($house_description, 0, 80);
 			$house_description .= '...';
@@ -54,15 +58,10 @@
 			
 
 			<div class="house-meta">
-				
 
 				<span><?= $house_floor_front ?> й этаж</span>
 				<span>Комнат: <?= $house_rooms_front ?></span>
-
-
 				<span>Район: <?= $house_location_front[0]->name ?></span>
-
-				
 
 			</div>
 		</li>		
