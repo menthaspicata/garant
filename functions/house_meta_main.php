@@ -21,7 +21,8 @@ $house_fields = array(
 	"house_area_live",			//жилая площадь
 	"house_area_kitchen",		//площадь кухни
 	"house_phone",					//телефон владельца
-	"house_who_answer"			//имя владельца
+	"house_who_answer",			//имя владельца
+	"house_responsible_agent"			//ответственный агент
 );
 
 

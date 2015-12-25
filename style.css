@@ -135,7 +135,7 @@ header.list-header:after {
 }
 header.list-header h1
 {
-    font-size: 40px;
+    font-size: 70px;
 
     width: 30%;
     float: left;
@@ -148,22 +148,22 @@ header.list-header h1
 header.list-header .header_button
 {
     display: inline-block;
-	height: 50px;
-	padding: 10px;
-    width: 20%;
+    height: 50px;
+    padding: 10px;
+    width: 10%;
     border: none;
     cursor: pointer;
     border: 2px solid #1D4991;
-	background: #f2f2f2;
+    background: #f2f2f2;
     margin-top: 45px;
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     -ms-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
+  
     
-    
-    font-size: 1em;
+    font-size: 0.7em;
     color: #4d4d4d;
     
     text-transform: uppercase;

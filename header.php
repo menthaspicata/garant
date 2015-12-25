@@ -40,10 +40,12 @@ wp_nav_menu( array(
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1></a>
 
-		<button class="header_button">связь с риелтором</button>
-
+		<button class="header_button">обратная связь</button> 
+		<button class="header_button">Закажи у нас оценку</button> 
 		<ul class="header_contacts">
-			<li>+380000000000</li>
-			<li>+380000000000</li>
+			<li>+38097605442</li>
+			<li>dsfsdsf@gmail.com</li>
 		</ul>
-	</header>
+		<?php echo do_shortcode("[huge_it_slider id='1']"); ?>
+ </header
+  

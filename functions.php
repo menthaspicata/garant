@@ -18,13 +18,29 @@ foreach ($courses as $course) {
 			continue;
 	}
 }
-
-const RENT_PAGE = 'rent';
-const SALE_PAGE = 'sale';
-
+function updateNumbers() {
+    global $wpdb;
+    $querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE $wpdb->posts.post_status = 'publish' AND $wpdb->posts.post_type = 'post' ";
+    $pageposts = $wpdb->get_results($querystr, OBJECT);
+    $counts = 0 ;
+    if ($pageposts):
+    foreach ($pageposts as $post):
+    setup_postdata($post);
+    $counts++;
+    add_post_meta($post->ID, 'incr_number', $counts, true);
+    update_post_meta($post->ID, 'incr_number', $counts);
+    endforeach;
+    endif;
+}
+ 
+add_action ( 'publish_post', 'updateNumbers' );
+add_action ( 'deleted_post', 'updateNumbers' );
+add_action ( 'edit_post', 'updateNumbers' );
 
 require 'functions/theme_settings.php';
 require 'functions/add_scripts.php';
+
+require 'functions/user_meta.php';
 
 require 'functions/house.php';
 require 'functions/house_meta_main.php';

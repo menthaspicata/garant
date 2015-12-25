@@ -1,6 +1,10 @@
 <section class="house_filters_chose">
 
+
+
 	<div <?php if ( is_home() ) echo 'class="active"'; ?> >
+
+
 		<a href="/garant/">Аренда</a>
 	</div>
 
