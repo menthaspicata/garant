@@ -39,11 +39,6 @@ $house_args = array(
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['house_filters_submit']) ) {
 
-	
-	//echo '<pre>';
-	//print_r($_POST);
-	//echo '</pre>';
-
 	/**
 	 * 		тип постройки
 	 */
@@ -57,9 +52,71 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['house_filters_submit'
 				'field'    => 'slug',
 				'terms'    => $house_type
 			);
-		}
+		}		
+	}
 
+	/**
+	 * 		Категория объекта
+	 */
 		
+	if ( isset($_POST['house_property_type']) ) {
+		$house_property_type = sanitize_text_field($_POST['house_property_type']);
+
+		if ( !($house_property_type == 'all') ) {
+			$house_args['tax_query'][] = array(
+				'taxonomy' => 'property_type',
+				'field'    => 'slug',
+				'terms'    => $house_property_type
+			);
+		}		
+	}
+
+	/**
+	 * 		Направление
+	 */
+		
+	if ( isset($_POST['direction']) ) {
+		$direction = sanitize_text_field($_POST['direction']);
+
+		if ( !($direction == 'all') ) {
+			$house_args['tax_query'][] = array(
+				'taxonomy' => 'house_direction',
+				'field'    => 'slug',
+				'terms'    => $direction
+			);
+		}		
+	}
+
+	/**
+	 * 		Вид постройки
+	 */
+		
+	if ( isset($_POST['build_type']) ) {
+		$build_type = sanitize_text_field($_POST['build_type']);
+
+		if ( !($build_type == 'all') ) {
+			$house_args['tax_query'][] = array(
+				'taxonomy' => 'house_build_type',
+				'field'    => 'slug',
+				'terms'    => $build_type
+			);
+		}		
+	}
+
+	/**
+	 * 		Район
+	 */
+		
+	if ( isset($_POST['house_location_filter']) ) {
+		$house_location_filter = sanitize_text_field($_POST['house_location_filter']);
+
+		if ( !($house_location_filter == 'all') ) {
+			$house_args['tax_query'][] = array(
+				'taxonomy' => 'house_location',
+				'field'    => 'slug',
+				'terms'    => $house_location_filter
+			);
+		}		
 	}
 
 	/**

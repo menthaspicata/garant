@@ -266,7 +266,7 @@ section.houses .thumb img {
 }
 
 section.houses .house-price,
-.house-content .house-price{
+.house-content .house-agent{
 	float: left;
 	padding: 15px;
 	background: #1D4991;
@@ -353,36 +353,71 @@ section.houses .house-meta span {
 	max-width: 500px;
 	float: left;
 }
+.house-content .thumb img {
+    height: auto !important;
+}
 
-.house-content .house-meta,
-.house-content .house-description {
-	width: 400px;
+.house-content .house-meta {
+	width: 450px;
 	float: left;
-	margin-left: 20px;
+    border: 1px solid #1D4991;
+    box-sizing: border-box;
 }
 
-.house-content .house-price{
-    width: 300px;
-    font-size: 1.5em;
-    text-align: center;  
-    padding-left: 0;
-    padding-right: 0;  
+.house-content .house-description {
+    width: 100%;
+    padding: 20px 50px;
+    box-sizing: border-box;
+    float: left;
 }
 
-.house-content .house-price h4 {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #e6e6e6;
+
+.house-content .house-agent {
+    width: 450px;
+    font-size: 1.6em;
+    padding-right: 15px;  
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.house-content .house-agent img {
+    float: right;
+}
+
+.house-content .house-agent h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.house-content .house-agent h6 {
+    padding-left: 10px;
 }
 
 .house-content .house_landlord {
-    float: left;
-    width: 300px;
+
     font-size: 1.2em;
-    padding-left: 20px;
+
 }
 
 
+.house-content .house-meta h4 {
+    padding: 7px 15px;
+
+}
+
+.house-content .house-meta h4 span {
+    display: block;
+    float: right;
+}
+
+.house-content .house-meta h4:nth-child(odd) {
+    background: rgba(29,73,145, 0.2);
+}
+
+.house-content .page_content {
+    width: 80%;
+    margin: 0 auto;
+}
 
 
 

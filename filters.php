@@ -99,9 +99,6 @@
 				echo '<option value="all" >Все</option>';
 				foreach ( $house_categories as $term ) {
 
-					?>
-					
-					<?php
 					echo '<option value="' . $term->slug . '"';
 
 					if ( $term->slug == $house_type ) {
@@ -128,11 +125,19 @@
 			echo 'Район:';
 			echo '</label>';
 			
-			echo '<select class="house_location" name="" >';
+			echo '<select class="house_location" name="house_location_filter" >';
 
 				echo '<option value="all" >Все</option>';
 				foreach ( $house_location as $term ) {
-					echo '<option value="' . $term->slug . '" >' . $term->name . '</option>';
+
+					echo '<option value="' . $term->slug . '"';
+
+					if ( $term->slug == $house_location_filter ) {
+						echo ' selected="selected"'; 
+					}
+					echo '>';
+					echo $term->name;
+					echo '</option>';
 				}
 
 			echo '</select>';
@@ -216,7 +221,7 @@
 
 
 		/**
-		 *		Тип постройки
+		 *		вид постройки
 		 */
 		$house_build_type = get_terms( 'house_build_type' );
 		if ( ! empty( $house_build_type ) && ! is_wp_error( $house_build_type ) ){
