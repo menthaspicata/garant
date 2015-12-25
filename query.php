@@ -8,11 +8,10 @@
 if ( is_page_template( 'sale.php' ) ) {
 	$args_deal_type = 'sale';
 } elseif ( is_page_template( 'change.php' ) ) {
-	$args_deal_type = 'change';
-} else {
+	$args_deal_type = 'trade';
+} elseif ( is_page_template( 'rent.php' ) ) {
 	$args_deal_type = 'rent';
 }
-
 
 $house_args = array(
 						'post_type' => 'house',

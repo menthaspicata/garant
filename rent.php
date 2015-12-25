@@ -1,4 +1,4 @@
-<?php /* Template Name: sale */ ?>
+<?php /* Template Name: rent */ ?>
 
 <?php get_header(); ?>
 

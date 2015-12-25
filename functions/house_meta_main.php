@@ -1,12 +1,3 @@
-<style type="text/css">
-	#house_meta_wrapp label {
-		min-width: 150px;
-		display: inline-block;
-		margin-bottom: 10px;
-		vertical-align: top;
-	}
-</style>
-
 <?php
 
 /**
@@ -90,6 +81,15 @@ function add_view_house_meta_main( $post ) {
 
 
 	?>
+
+	<style type="text/css">
+		#house_meta_wrapp label {
+			min-width: 150px;
+			display: inline-block;
+			margin-bottom: 10px;
+			vertical-align: top;
+		}
+	</style>
 
 	<section id="house_meta_wrapp">
 
@@ -231,7 +231,3 @@ function add_view_house_meta_main( $post ) {
 <?php
 
 }
-
-
-
-

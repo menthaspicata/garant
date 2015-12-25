@@ -20,6 +20,9 @@
 		$house_agent_id = esc_attr(get_post_meta( $post->ID, '_house_agent', true ));
 		$house_agent = get_user_by( 'id', $house_agent_id );
 
+		$house_phone_front = esc_attr(get_post_meta( $post->ID, '_house_phone', true ));
+		$house_who_answer_front = esc_attr(get_post_meta( $post->ID, '_house_who_answer', true ));
+
 
 
 
@@ -39,6 +42,14 @@
 
 					<h4><?=  $house_agent->first_name . ' ' . $house_agent->last_name;;  ?>, <?= esc_attr( get_the_author_meta( 'phone', $house_agent_id ) );?></h4>
 				</div>			
+
+				<h4 class="house_landlord">
+				<?php
+					if ( is_user_logged_in() ) {
+						echo 'Хозяин: ' . $house_who_answer_front . ', ' .$house_phone_front;
+					} 
+				?>
+				</h4>
 
 				<div class="house-meta">
 					

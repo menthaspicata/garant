@@ -22,20 +22,3 @@ function add_scripts() {
 	wp_enqueue_script( 'wookmark' );
 	wp_enqueue_script( 'app' );
 } 
-
-
-add_action( 'admin_enqueue_scripts', 'add_media_uploader' );
-
-/**
- * Loads the image management javascript
- */
-function add_media_uploader() {
-    global $typenow;
-    if( $typenow == 'house') {
-        wp_enqueue_media();
- 
-        // Registers and enqueues the required javascript.
-        wp_register_script( 'meta-box-image', get_template_directory_uri() . '/js/house_galery.js', array( 'jquery' ), '1.0' );
-        wp_enqueue_script( 'meta-box-image' );
-    }
-}

@@ -198,6 +198,7 @@ header.list-header .header_contacts li {
 {
     display: inline-block;
     margin: 5px 30px;
+    
 }
 
 
@@ -247,17 +248,21 @@ section.houses li.house-thumb a:hover{
 section.houses .house-thumb h1{
     margin-bottom: 10px;
     color: #1a1a1a;
-    font-size: 1.7em;
+    font-size: 1.4em;
     padding-left: 10px;
+    float: left;
+    width: 200px;
 }
 
 section.houses .thumb
 {
 	float: left;
-	padding-left: 10px;
 }
 section.houses .thumb img {
-	max-width: 270px;
+	max-width: 250px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
 }
 
 section.houses .house-price,
@@ -290,10 +295,19 @@ section.houses .house-description a {
 
 section.houses .house-meta {
 	float: left;
-	width: 100%;
-	margin-top: 20px;
-	background: #ccc;
-	border-top: 1px solid #313567;
+	width: 200px;
+    padding-left: 10px;
+}
+
+section.houses .house-meta h4 {
+    margin-bottom: 3px;
+}
+
+section.houses .house-meta a {
+    display: block;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 section.houses .house-meta span {
@@ -318,6 +332,8 @@ section.houses .house-meta span {
 	background: #f2f2f2;
 	margin-top: 15px;
 	padding: 10px 30px;
+    border: 1px solid #1D4991;
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 
 .house-content:after {
@@ -328,7 +344,7 @@ section.houses .house-meta span {
 
 .house-content h1 {
 	text-align: center;
-	font-size: 2.5em;
+	font-size: 3.5em;
 	margin-bottom: 15px;
 	color: #4d4d4d;
 }
@@ -357,6 +373,13 @@ section.houses .house-meta span {
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid #e6e6e6;
+}
+
+.house-content .house_landlord {
+    float: left;
+    width: 300px;
+    font-size: 1.2em;
+    padding-left: 20px;
 }
 
 
