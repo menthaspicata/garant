@@ -116,7 +116,7 @@ aside
     text-decoration: underline;
 }
 
-header.list-header
+.list-header
 {
     padding: 15px 0;
 
@@ -128,12 +128,12 @@ header.list-header
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 
-header.list-header:after {
+.list-header:after {
     content: '';
     display: block;
     clear: both;
 }
-header.list-header h1
+.list-header h1
 {
     font-size: 40px;
 
@@ -145,7 +145,7 @@ header.list-header h1
     color: #4d4d4d;
     background: #f2f2f2;
 }
-header.list-header .header_button
+.list-header .header_button
 {
     display: inline-block;
 	height: 50px;
@@ -172,21 +172,21 @@ header.list-header .header_button
                 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 
-header.list-header .header_button:hover {
+.list-header .header_button:hover {
     background: #1D4991;
     color: #e6e6e6;
 }
 
-header.list-header .header_contacts
+.list-header .header_contacts
 {
     -display: inline-block;
 	float: right;
     width: 30%;
 	color: #4d4d4d;
     text-align: center;
-    margin-top: 55px;
+    margin-top: 25px;
 }
-header.list-header .header_contacts li {
+.list-header .header_contacts li {
     font-size: 1.1em;
 }
 .header_nav
@@ -194,11 +194,38 @@ header.list-header .header_contacts li {
     text-align: center;
     border-bottom: 1px solid #1D4991;
 }
-.header_nav li
+.header_nav li,
+.footer_nav li
 {
     display: inline-block;
     margin: 5px 30px;
     
+}
+
+footer {
+    margin-top: 15px;
+    border-bottom: none;
+}
+
+footer h1.header_logo {
+    float: right;
+    width: 25%;
+}
+footer.list-header .header_contacts {
+    float: left;
+}
+
+.footer_nav_list a {
+    color: #4d4d4d;
+    text-decoration: underline;
+}
+
+.footer_nav {
+    text-align: center;
+    background: #F2F2F2;
+    border-left: 1px solid #1D4991;
+    border-right: 1px solid #1D4991;
+
 }
 
 

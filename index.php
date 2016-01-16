@@ -1,14 +1,14 @@
 <?php get_header(); ?>
 
 
-<?php require 'query.php'; ?>
-<?php require 'filters.php'; ?>
+<?php require 'includes/query.php'; ?>
+<?php require 'includes/filters.php'; ?>
 
 
 <section class="houses">
 	<ul class="content">
 
-		<?php require 'loop.php'; ?>
+		<?php require 'includes/loop.php'; ?>
 
 	</ul>
 </section>

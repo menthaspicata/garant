@@ -57,13 +57,15 @@
 				
 
 				<div class="house-meta">
-					<h4 class="house_landlord">
+					
 						<?php
 							if ( is_user_logged_in() ) {
+								echo '<h4 class="house_landlord">';
 								echo 'Хозяин: <span>' . $house_who_answer_front . ', ' .$house_phone_front . '</span>';
+								echo '</h4>';
 							} 
 						?>
-					</h4>
+					
 
 					<h4>Цена в долларах: <span><?= $house_price_front; ?> $</span></h4>
 					<h4>Цена в гривнах: <span><?= $house_price_UAH_front; ?> грн</span></h4>					

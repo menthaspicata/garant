@@ -6,8 +6,6 @@
 
 	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/style.css'; ?>">
 
-
-
 	<?php wp_head(); ?>
 </head>
 
@@ -36,19 +34,17 @@ wp_nav_menu( array(
 
 ?>
 	
-	<header class="list-header">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1>
-		</a>
+<header class="list-header">
+	<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1>
+	</a>
 
-		
+	<button class="header_button">обратная связь</button>
 
-		<button class="header_button">обратная связь</button>
-
-		<ul class="header_contacts">
-			<li>Гарант</li>
-			<li>(050)9816278</li>
-			<li>(050)9747779</li>
-			<li>ул.9 Января 38</li>
-		</ul>
-	</header>
+	<ul class="header_contacts">
+		<li>Гарант</li>
+		<li>(050)9816278</li>
+		<li>(050)9747779</li>
+		<li>ул.9 Января 38</li>
+	</ul>
+</header>

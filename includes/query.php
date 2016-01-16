@@ -157,6 +157,111 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['house_filters_submit'
 		);
 	}
 
+	/**
+	* 		фильтр по комнатам
+	*/
+
+	if ( !empty($_POST['room_from']) && !empty($_POST['room_too']) ) {
+
+		$room_from = sanitize_text_field($_POST['room_from']);
+		$room_too = sanitize_text_field($_POST['room_too']);
+
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_rooms',
+			'value'    	=> array( $room_from, $room_too ),
+			'type'		=> 'numeric',
+			'compare'   => 'BETWEEN',
+		);
+	} 
+	elseif ( !empty($_POST['room_from']) ) {
+		$room_from = sanitize_text_field($_POST['room_from']);
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_rooms',
+			'value'    	=> $room_from,
+			'type'		=> 'numeric',
+			'compare'   => '>=',
+		);
+	} 
+	elseif ( !empty($_POST['room_too']) ) {
+		$room_too = sanitize_text_field($_POST['room_too']);
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_rooms',
+			'value'    	=> $room_too,
+			'type'		=> 'numeric',
+			'compare'   => '<=',
+		);
+	}
+
+	/**
+	* 		фильтр по этажам
+	*/
+
+	if ( !empty($_POST['floor_from']) && !empty($_POST['floor_too']) ) {
+
+		$floor_from = sanitize_text_field($_POST['floor_from']);
+		$floor_too = sanitize_text_field($_POST['floor_too']);
+
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_floor',
+			'value'    	=> array( $floor_from, $floor_too ),
+			'type'		=> 'numeric',
+			'compare'   => 'BETWEEN',
+		);
+	} 
+	elseif ( !empty($_POST['floor_from']) ) {
+		$floor_from = sanitize_text_field($_POST['floor_from']);
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_floor',
+			'value'    	=> $floor_from,
+			'type'		=> 'numeric',
+			'compare'   => '>=',
+		);
+	} 
+	elseif ( !empty($_POST['floor_too']) ) {
+		$floor_too = sanitize_text_field($_POST['floor_too']);
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_floor',
+			'value'    	=> $floor_too,
+			'type'		=> 'numeric',
+			'compare'   => '<=',
+		);
+	}
+
+	/**
+	* 		фильтр по площади
+	*/
+
+	if ( !empty($_POST['area_from']) && !empty($_POST['area_too']) ) {
+
+		$area_from = sanitize_text_field($_POST['area_from']);
+		$area_too = sanitize_text_field($_POST['area_too']);
+
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_area_total',
+			'value'    	=> array( $area_from, $area_too ),
+			'type'		=> 'numeric',
+			'compare'   => 'BETWEEN',
+		);
+	} 
+	elseif ( !empty($_POST['area_from']) ) {
+		$area_from = sanitize_text_field($_POST['area_from']);
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_area_total',
+			'value'    	=> $area_from,
+			'type'		=> 'numeric',
+			'compare'   => '>=',
+		);
+	} 
+	elseif ( !empty($_POST['area_too']) ) {
+		$area_too = sanitize_text_field($_POST['area_too']);
+		$house_args['meta_query'][] = array(
+			'key' 		=> '_house_area_total',
+			'value'    	=> $area_too,
+			'type'		=> 'numeric',
+			'compare'   => '<=',
+		);
+	}
+
 
 
 	//if ( count($house_args['meta_query']) >= 2 ) {

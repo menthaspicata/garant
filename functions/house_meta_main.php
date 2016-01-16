@@ -8,6 +8,7 @@
 
 $house_fields = array(
 	"house_price",					//цена
+	"house_price_grivna",
 	"house_adress",				//улица
 	"house_adress_number",		//номер дома
 	"house_adress_apartment", 	//Номер квартиры
@@ -152,12 +153,14 @@ function add_view_house_meta_main( $post ) {
 	<hr>
 	<p>Широту и долготу нужно брать из google maps, предварительно указав точный адрес. Где их найти написано <a href="https://support.google.com/maps/answer/18539?hl=ru">тут</a></p>
 	<hr>
+
+
 	<p>
-		<label for="house_price">Цена:</label>
-		<input onchange="" type="text" id="house_price" name="house_price" value="<?= esc_attr( $house_price ) ?>" size="8" /> <span>$</span>
+		<label for="house_price">Цена в долларах:</label>
+		<input onchange="" type="text" id="house_price" name="house_price" value="<?= esc_attr( $house_price ) ?>" size="8" />
 		<br>
 		<label for="house_price_grivna">Цена в гривнах:</label>
-		<input id="house_price_grivna" type="text" value="<?= $house_price * $USD_p24 ?>" size="8" disabled>&nbsp;<i>по курсу нбу</i>
+		<input id="house_price_grivna" type="text" name="house_price_grivna" value="<?= esc_attr( $house_price_grivna ) ?>" size="8">
 
 	</p>
 	<hr>
@@ -216,7 +219,12 @@ function add_view_house_meta_main( $post ) {
 		var USD_p24 = <?= $USD_p24 ?> 
 		var house_price = document.getElementById('house_price');
 		house_price.oninput = function() {
-			document.getElementById('house_price_grivna').value = (house_price.value * USD_p24).toFixed();
+			document.getElementById('house_price_grivna').value  = (house_price.value * USD_p24).toFixed();
+		};
+
+		var house_price_grivna = document.getElementById('house_price_grivna');
+		house_price_grivna.oninput = function() {
+			document.getElementById('house_price').value  = (house_price_grivna.value / USD_p24).toFixed();
 		};
 	</script>
 
