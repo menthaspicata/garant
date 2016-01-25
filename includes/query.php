@@ -13,7 +13,11 @@ if ( is_page_template( 'sale.php' ) ) {
 	$args_deal_type = 'rent';
 }
 
+//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 $house_args = array(
+						'nopaging' => true,
+						//'paged'=>$paged,
 						'post_type' => 'house',
 						'tax_query' => array(
 							'relation' => 'AND',

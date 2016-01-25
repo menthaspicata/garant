@@ -8,7 +8,7 @@
 
 $house_fields = array(
 	"house_price",					//цена
-	"house_price_grivna",
+	"house_price_grivna",		//цена в гривне
 	"house_adress",				//улица
 	"house_adress_number",		//номер дома
 	"house_adress_apartment", 	//Номер квартиры
@@ -23,7 +23,8 @@ $house_fields = array(
 	"house_area_kitchen",		//площадь кухни
 	"house_phone",					//телефон владельца
 	"house_who_answer",			//имя владельца
-	"house_agent"					//агент
+	"house_agent",					//агент
+	"house_exclusive"				//эксклюзив
 );
 
 /**
@@ -93,6 +94,16 @@ function add_view_house_meta_main( $post ) {
 	</style>
 
 	<section id="house_meta_wrapp">
+
+	<p>
+		<label for="house_exclusive">Эксклюзив:</label>
+		Да &nbsp;<input type="radio" name="house_exclusive" value="house_exclusive_yes"
+		<?php if ( $house_exclusive == 'house_exclusive_yes' ) { echo 'checked'; } ?> > 
+		&nbsp;&nbsp;&nbsp;
+		Нет &nbsp;<input type="radio" name="house_exclusive" value="house_exclusive_no"
+		<?php if ( $house_exclusive !== 'house_exclusive_no' ) { echo 'checked'; } ?> >
+
+	</p>
 
 	<p>
 		<label for="house_agent">Агент:</label>

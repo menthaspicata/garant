@@ -39,7 +39,7 @@ wp_nav_menu( array(
 		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1>
 	</a>
 
-	<button class="header_button">обратная связь</button>
+	<button class="header_button">Заявка купить / продать</button>
 
 	<ul class="header_contacts">
 		<li>Гарант</li>
@@ -48,3 +48,5 @@ wp_nav_menu( array(
 		<li>ул.9 Января 38</li>
 	</ul>
 </header>
+
+<?php require 'includes/form.php'; ?>
