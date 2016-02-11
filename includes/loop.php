@@ -21,11 +21,14 @@
 
 		$cur_house_title = the_title('','',false);
 
+		$house_exclusive = esc_attr(get_post_meta( $current_post_id, '_house_exclusive', true ));
+		
+
 
 		
 	?>
 	
-		<li class="house-thumb" >	
+		<li class="house-thumb <?php if ( $house_exclusive == 'house_exclusive_yes' ) { echo 'house_exclusive_thumb'; }?>" >	
 
 			<h1><?= $cur_house_title; ?></h1>		
 		
@@ -40,23 +43,21 @@
 						src="' . get_template_directory_uri() . '/img/logo.jpg" 
 						title="' . $cur_house_title . '" 
 						alt="' . $cur_house_title . '">';
-					}
-
-					 
+					}				 
 
 				?> 
 			</div>
 
 			
 
-			<div class="house-meta">
+			<div class="house-meta meta_loop">
 
-				<h4>Район: <?= $house_location_front[0]->name; ?></h4>
-				<h4>Комнат: <?= $house_rooms_front; ?></h4>
-				<h4>Этаж: <?= $house_floor_front; ?> / <?= $house_all_floor_front; ?></h4>
-				<h4>Площадь: <?= $house_area_total_front . ' / ' . $house_area_live_front . ' / ' . $house_area_kitchen_front; ?></h4>
-				<h4>Цена: <?= $house_price_front; ?>$ / <?= $house_price_UAH_front; ?>грн</h4>
-				<h4>Телефон: <?= esc_attr( get_the_author_meta( 'phone', $house_agent_id ) );?></h4>		
+				<h4>Район: <span><?= $house_location_front[0]->name; ?></span></h4>
+				<h4>Комнат: <span><?= $house_rooms_front; ?></span></h4>
+				<h4>Этаж: <span><?= $house_floor_front; ?> / <?= $house_all_floor_front; ?></span></h4>
+				<h4>Площадь: <span><?= $house_area_total_front . ' / ' . $house_area_live_front . ' / ' . $house_area_kitchen_front; ?></span></h4>
+				<h4>Цена: <span><?= $house_price_front; ?>$ / <?= $house_price_UAH_front; ?>грн</span></h4>
+				<h4>Телефон: <span><?= esc_attr( get_the_author_meta( 'phone', $house_agent_id ) );?></span></h4>		
 
 				<a href="<?= wp_get_shortlink(); ?>">подробнее</a>
 
@@ -68,6 +69,6 @@
 
 
 <?php else : ?>
-	<h2>Ничего не найдено</h2>
+	<h1>Ничего не найдено</h1>
 
 <?php	endif; ?>

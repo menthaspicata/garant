@@ -1,9 +1,9 @@
 <footer class="list-header">
 
 	<ul class="header_contacts">
-		<li>Гарант 2015 &copy; Все права защищены.</li>
-		<li>(050)9816278, (050)9747779</li>
-		<li>ул.9 Января 38</li>
+		<li>(050)9816278</li>
+		<li>(050)9747779</li>
+		<li>ул. 9 Января 38</li>
 	</ul>
 
 
@@ -32,6 +32,8 @@
 		);
 
 		?>
+
+		<div class="copyright">Гарант <?= date("Y"); ?> &copy; Все права защищены.	</div>
 
 </div>
 

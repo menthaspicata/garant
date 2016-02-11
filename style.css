@@ -228,6 +228,13 @@ footer.list-header .header_contacts {
 
 }
 
+.copyright {
+    border-top: 1px solid #1D4991;
+    background: #F2F2F2;
+    padding: 3px;
+    text-align: center;      
+}
+
 
 
 
@@ -387,7 +394,7 @@ section.houses li.house-thumb{
     float: left;
     overflow: hidden;
     box-sizing: border-box;
-    width: 470px;
+    width: 490px;
     margin-bottom: 40px;
     transition: .2s;
     border: 1px solid #1D4991; 
@@ -404,33 +411,42 @@ section.houses li.house-thumb a:hover{
 }
 
 section.houses .house-thumb h1{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #1a1a1a;
-    font-size: 1.5em;
+    font-size: 1.6em;
+    font-weight: 400;
     padding-left: 10px;
     padding-bottom: 10px;
     padding-top: 10px;
     text-align: center;
-    border-bottom: 1px solid #1D4991;
+    color: #f2f2f2;
+    background: rgba(29,73,145, 0.9); 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 section.houses .thumb
 {
 	float: left;
     min-width: 200px;
-    text-align: center;
-    
+    text-align: center; 
 }
 section.houses .thumb img {
-	max-width: 250px;
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-bottom: 10px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	max-width: 200px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
 
 section.houses .house-price,
 .house-content .house-agent{
-	float: left;
+	float: right;
 	padding: 15px;
 	background: #1D4991;
 	color: #e6e6e6;
@@ -441,7 +457,7 @@ section.houses .house-price,
 }
 
 section.houses .house-description {
-	float: left;
+	float: right;
 	width: 170px;
 	margin-left: 10px;
 	margin-bottom: 10px;
@@ -471,7 +487,10 @@ section.houses .house-meta a {
     float: right;
     margin-top: 10px;
     margin-bottom: 5px;
-    margin-right: 10px;
+    margin-right: 5px;
+    padding: 3px 5px;
+    color: #e6e6e6;
+    background: #1D4991;
 }
 
 section.houses .house-meta span {
@@ -482,6 +501,74 @@ section.houses .house-meta span {
     border-right: 1px solid #313567;
 }
 
+section.houses.exclusive h1.exclusive_header {
+    text-align: center;
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: #4d4d4d;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #313567;
+}
+
+section.houses.exclusive li.house-thumb.house_exclusive_thumb h1 {
+    padding-left: 50px;
+}
+
+section.houses.exclusive li.house-thumb.house_exclusive_thumb:before {
+    content: 'VIP';
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+    top: 5px;
+    left: 5px;
+    padding: 8px 5px 5px 4px;
+
+    font-size: 17px;
+    border-radius: 100%;
+    text-align: center;    
+    
+    background: #f2f2f2;
+    color: red;
+    z-index: 8;
+    -ms-transform: rotate(-40deg); /* IE 9 */
+    -webkit-transform: rotate(-40deg); /* Chrome, Safari, Opera */
+    transform: rotate(-40deg);
+}
+
+
+section.houses .house-meta.meta_loop {
+    width: 250px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #1D4991;
+    margin: 0 10px 10px 0;
+    padding-right: 0;
+
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
+}
+
+section.houses .house-meta.meta_loop h4 {
+    padding: 5px 7px;
+}
+
+section.houses .house-meta.meta_loop h4 span {
+    padding: 0;
+}
+
+.house-meta.meta_loop h4:nth-child(even) {
+    background: rgba(29,73,145, 0.2);
+}
+
+.house-meta.meta_loop h4:nth-child(odd) {
+    background: #F2F2F2;
+}
 
 
 
@@ -514,8 +601,15 @@ section.houses .house-meta span {
 }
 
 .house-content .thumb {
+    min-width: 450px;
 	max-width: 500px;
+    min-height: 300px;
 	float: left;
+}
+
+.house-content .house_gallery {
+    width: 900px;
+    float: left;
 }
 .house-content .thumb img {
     height: auto !important;
@@ -523,7 +617,7 @@ section.houses .house-meta span {
 
 .house-content .house-meta {
 	width: 450px;
-	float: left;
+	float: right;
     border: 1px solid #1D4991;
     box-sizing: border-box;
 }
@@ -564,17 +658,23 @@ section.houses .house-meta span {
 }
 
 
-.house-content .house-meta h4 {
+ .house-meta h4 {
     padding: 7px 15px;
 
 }
 
-.house-content .house-meta h4 span {
+
+
+.house-meta.meta_loop h4 span {
+    border-right: none;
+}
+
+.house-meta h4 span {
     display: block;
     float: right;
 }
 
-.house-content .house-meta h4:nth-child(odd) {
+.house-meta h4:nth-child(odd) {
     background: rgba(29,73,145, 0.2);
 }
 

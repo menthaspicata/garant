@@ -5,7 +5,12 @@
 <?php require 'includes/filters.php'; ?>
 
 
+
+
 <section class="houses">
+
+	
+
 	<ul class="content">
 
 		<?php require 'includes/loop.php'; ?>

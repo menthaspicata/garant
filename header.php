@@ -2,8 +2,9 @@
 <html lang="ru">
 <head>
 	<meta charset="utf-8">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php wp_title( '|', true, 'right' ); bloginfo('name'); ?></title>
 
+	<link rel="icon" type="image/png" href="<?= get_template_directory_uri() . '/img/favicon.png'; ?>" />
 	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/style.css'; ?>">
 
 	<?php wp_head(); ?>
@@ -42,10 +43,9 @@ wp_nav_menu( array(
 	<button class="header_button">Заявка купить / продать</button>
 
 	<ul class="header_contacts">
-		<li>Гарант</li>
 		<li>(050)9816278</li>
 		<li>(050)9747779</li>
-		<li>ул.9 Января 38</li>
+		<li>ул. 9 Января 38</li>
 	</ul>
 </header>
 

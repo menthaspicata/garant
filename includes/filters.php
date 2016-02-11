@@ -1,7 +1,7 @@
 <section class="house_filters_chose">
 
 	<div <?php if ( is_page_template( 'sale.php' ) ) echo 'class="active"'; ?> >
-		<a href="/">Продажа</a>
+		<a href="/sale/">Продажа</a>
 	</div>
 
 	<div <?php if ( is_page_template( 'rent.php' ) ) echo 'class="active"'; ?> >

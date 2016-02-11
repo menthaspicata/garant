@@ -5,13 +5,7 @@
  * 		с разделением на страницы аренды и продажи
  */
 
-if ( is_page_template( 'sale.php' ) ) {
-	$args_deal_type = 'sale';
-} elseif ( is_page_template( 'change.php' ) ) {
-	$args_deal_type = 'trade';
-} elseif ( is_page_template( 'rent.php' ) ) {
-	$args_deal_type = 'rent';
-}
+
 
 //$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
@@ -22,11 +16,6 @@ $house_args = array(
 						'tax_query' => array(
 							'relation' => 'AND',
 							array(
-								'taxonomy' => 'house_deal_type',
-								'field'    => 'slug',
-								'terms'    => $args_deal_type,
-							),
-							array(
 								'taxonomy' => 'house_status',
 								'field'    => 'slug',
 								'terms'    => 'active'
@@ -36,12 +25,18 @@ $house_args = array(
 );
 
 
+$form_submitted = false;
+
+
+
 /**
  * 		проверяем что пришло из формы с фильтрами
  * 		и добавляем значения в массив параметров для запроса  
  */
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['house_filters_submit']) ) {
+
+	$form_submitted = true;
 
 	/**
 	 * 		тип постройки
@@ -274,10 +269,35 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['house_filters_submit'
 
 }
 
-//echo '<pre>';
-//print_r($house_args);
-//echo '</pre>';
 
+if ( is_page_template( 'sale.php' ) ) {
+	$args_deal_type = 'sale';
+} 
+elseif ( is_page_template( 'change.php' ) ) {
+	$args_deal_type = 'trade';
+} 
+elseif ( is_page_template( 'rent.php' ) ) {
+	$args_deal_type = 'rent';
+}
+
+
+if ( is_page_template( 'exclusive.php' ) ) {
+	$args_deal_type = array( 'sale', 'rent', 'trade' );
+} 
+
+$house_args['tax_query'][] = array(
+	'taxonomy' => 'house_deal_type',
+	'field'    => 'slug',
+	'terms'    => $args_deal_type,
+);
+
+
+if ( is_array( $args_deal_type ) && !$form_submitted)  {
+	$house_args['meta_query'][] = array(
+		'key' 		=> '_house_exclusive',
+		'value'    	=> 'house_exclusive_yes'
+	);
+}
 
 
 

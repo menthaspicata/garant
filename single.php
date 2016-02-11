@@ -28,6 +28,7 @@
 	$house_street_number = esc_attr(get_post_meta( $post->ID, '_house_adress_number', true ));
 	$house_apartment_number = esc_attr(get_post_meta( $post->ID, '_house_adress_apartment', true ));
 	$house_description = esc_attr(get_post_meta( $post->ID, '_house_description', true ));
+	$house_prozvon = esc_attr(get_post_meta( $post->ID, '_house_prozvon', true ));
 
 
 
@@ -39,7 +40,19 @@
 				
 			
 				<div class="thumb">
-					<?php the_post_thumbnail( 'full' ); ?> 
+					<?php 
+
+					if ( has_post_thumbnail($current_post_id) ) {
+						the_post_thumbnail( 'full' );
+					} else {
+						echo '<img 
+						class="thumb_logo" 
+						src="' . get_template_directory_uri() . '/img/logo.jpg" 
+						title="' . $cur_house_title . '" 
+						alt="' . $cur_house_title . '">';
+					}				 
+
+				?>  
 				</div>
 
 				<div class="house-agent">
@@ -48,6 +61,8 @@
 					?>
 
 					<h4><?=  $house_agent->first_name . ' ' . $house_agent->last_name;;  ?> </h4>
+
+					<h6><?= esc_attr( get_the_author_meta( 'profession', $house_agent_id ) ); ?></h6>
 
 					<h6><?= esc_attr( get_the_author_meta( 'phone', $house_agent_id ) );?></h6> 
 					<h6><?= esc_attr( get_the_author_meta( 'second_phone', $house_agent_id ) );?></h6>
@@ -96,6 +111,7 @@
 							echo 'Тип: <span>';
 							echo $house_categories_front[0]->name;
 							echo '</span></h4>';
+
 						} 
 					?>
 
@@ -109,6 +125,16 @@
 					<h4>Площадь кухни: <span><?= $house_area_kitchen_front; ?></span></h4>
 					<h4>Жилая площадь: <span><?= $house_area_live_front; ?></span></h4>	
 
+
+					<?php 
+						if ( is_user_logged_in() ) {
+							echo '<h4>';
+							echo 'Прозвон: <span>';
+							echo $house_prozvon;
+							echo '</span></h4>';
+						}
+					?>
+
 					<h4>ID: <span><?= $post->ID; ?></span></h4>			
 
 				</div>
@@ -117,7 +143,20 @@
 					<?= $house_description; ?>
 				</div>
 
-				<?php  do_shortcode( $house_gallery_front ); ?>
+				
+
+				<div class="house_gallery">
+					<?php  
+
+						echo do_shortcode( $house_gallery_front[0] );
+					?>
+					
+				</div>
+
+				
+
+				
+
 		</section>		
 
 		

@@ -24,7 +24,8 @@ $house_fields = array(
 	"house_phone",					//телефон владельца
 	"house_who_answer",			//имя владельца
 	"house_agent",					//агент
-	"house_exclusive"				//эксклюзив
+	"house_exclusive",			//эксклюзив
+	"house_prozvon"				//прозвон
 );
 
 /**
@@ -221,6 +222,11 @@ function add_view_house_meta_main( $post ) {
 	<p>
 		<label for="house_who_answer">ФИО:</label>
 		<input type="text" id="house_who_answer" name="house_who_answer" value="<?= esc_attr( $house_who_answer ) ?>" style="width:60%;" />
+	</p>
+
+	<p>
+		<label for="house_prozvon">Прозвон:</label>
+		<input type="text" id="house_prozvon" name="house_prozvon" value="<?= esc_attr( $house_prozvon ) ?>" style="width:60%;" />
 	</p>
 
 

@@ -29,6 +29,18 @@ function yoursite_extra_user_profile_fields( $user ) {
       </td>
     </tr>
   </table>
+
+
+  <table class="form-table">
+  <th><label for="profession"><?php _e("Профессия"); ?></label></th>
+    <tr>      
+      <td>
+        <input type="text" name="profession" id="profession" class="regular-text" 
+            value="<?php echo esc_attr( get_the_author_meta( 'profession', $user->ID ) ); ?>" /><br />
+        <span class="description"><?php _e("Пожалуйста, укажите профессию"); ?></span>
+      </td>
+    </tr>
+  </table>
 <?php
 }
 
@@ -40,6 +52,9 @@ function yoursite_save_extra_user_profile_fields( $user_id ) {
     update_user_meta( $user_id, 'phone', $_POST['phone'] );
     update_user_meta( $user_id, 'second_phone', $_POST['second_phone'] );
     update_user_meta( $user_id, 'third_phone', $_POST['third_phone'] );
+
+    update_user_meta( $user_id, 'profession', $_POST['profession'] );
+
     $saved = true;
   }
 

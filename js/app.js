@@ -2,7 +2,7 @@ jQuery( document ).ready(function() {
 
 	jQuery('.content').wookmark({
 		autoResize: true, 
-		offset: 30 
+		offset: 10 
 	});
 
 	var header_button = jQuery('.header_button');
