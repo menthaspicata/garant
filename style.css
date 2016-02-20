@@ -90,6 +90,23 @@ a:hover
     text-decoration: underline;
 }
 
+
+
+/**
+ *      shadow
+ */
+
+.material_shadow {
+
+    -webkit-box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14),
+                        0 3px 1px -2px rgba(49, 53, 103, .2),
+                        0 1px 5px 0 rgba(49, 53, 103, .12);
+
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 
+                0 3px 1px -2px rgba(49, 53, 103, .2), 
+                0 1px 5px 0 rgba(49, 53, 103, .12);
+}
+
 aside
 {
     margin: 15px; 
@@ -229,7 +246,7 @@ footer.list-header .header_contacts {
 }
 
 .copyright {
-    border-top: 1px solid #1D4991;
+    border: 1px solid #1D4991;
     background: #F2F2F2;
     padding: 3px;
     text-align: center;      
@@ -512,12 +529,12 @@ section.houses.exclusive h1.exclusive_header {
 }
 
 section.houses.exclusive li.house-thumb.house_exclusive_thumb h1 {
-    padding-left: 50px;
+    -padding-left: 50px;
 }
 
 section.houses.exclusive li.house-thumb.house_exclusive_thumb:before {
     content: 'VIP';
-    display: block;
+    display: none;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -570,6 +587,11 @@ section.houses .house-meta.meta_loop h4 span {
     background: #F2F2F2;
 }
 
+.nothing_found {
+    text-align: center;
+    position: relative !important;
+}
+
 
 
 
@@ -582,7 +604,7 @@ section.houses .house-meta.meta_loop h4 span {
 .house-content {
 	background: #f2f2f2;
 	margin-top: 15px;
-	padding: 10px 30px;
+	padding: 10px 30px 30px;
     border: 1px solid #1D4991;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }
@@ -601,22 +623,19 @@ section.houses .house-meta.meta_loop h4 span {
 }
 
 .house-content .thumb {
-    min-width: 450px;
-	max-width: 500px;
     min-height: 300px;
+    min-width: 450px;
+    max-width: 600px;
 	float: left;
 }
 
-.house-content .house_gallery {
-    width: 900px;
-    float: left;
-}
+
 .house-content .thumb img {
     height: auto !important;
 }
 
 .house-content .house-meta {
-	width: 450px;
+	width: 350px;
 	float: right;
     border: 1px solid #1D4991;
     box-sizing: border-box;
@@ -631,8 +650,8 @@ section.houses .house-meta.meta_loop h4 span {
 
 
 .house-content .house-agent {
-    width: 450px;
-    font-size: 1.6em;
+    width: 350px;
+    font-size: 1.3em;
     padding-right: 15px;  
     margin-bottom: 0;
     box-sizing: border-box;
@@ -645,6 +664,8 @@ section.houses .house-meta.meta_loop h4 span {
 .house-content .house-agent h4 {
     margin-top: 0;
     margin-bottom: 10px;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .house-content .house-agent h6 {
@@ -652,15 +673,10 @@ section.houses .house-meta.meta_loop h4 span {
 }
 
 .house-content .house_landlord {
-
     font-size: 1.2em;
-
 }
-
-
  .house-meta h4 {
     padding: 7px 15px;
-
 }
 
 
@@ -689,6 +705,47 @@ section.houses .house-meta.meta_loop h4 span {
 }
 
 
+/**
+ *              ГАЛЕРЕЯ
+ */
+
+
+.house-content .house_gallery {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #1D4991;
+    border-bottom: 1px solid #1D4991;
+    float: left;
+    text-align: left;
+}
+
+.house-content .house_gallery img.gallery_thumb {
+    width: 13%;
+    margin-right: 1%;
+    margin-bottom: 2%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+
+
+/**
+ *              карта
+ */
+
+.house_map {
+    -display: none;
+    padding-top: 10px;
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+    height: 300px;
+}
+
+#map {
+    height: 100%;
+}
 
 
 
@@ -749,6 +806,7 @@ section.house_filters_chose div:hover a {
 
 section.house_filters
 {
+    position: relative;
     margin: 0 0 20px;
     padding: 20px 15px 0;
     text-align: center;
@@ -832,4 +890,37 @@ section.house_filters input.search_house {
     padding: 5px;
 	box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
     cursor: pointer;
+}
+
+#spoiler {
+    display: none;
+    position: relative;
+}
+
+#more {
+    font-size: 13px;
+    position: absolute;
+    bottom: 15px;
+    left: 80px;
+    display: block;
+    cursor: pointer;
+    background: #1D4991;
+    border-color: #1D4991;
+    color: #e6e6e6;
+    padding: 5px;
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
+}
+
+#less {
+    font-size: 13px;
+    position: absolute;
+    bottom: -40px;
+    left: 65px;
+    display: block;
+    cursor: pointer;
+    background: #1D4991;
+    border-color: #1D4991;
+    color: #e6e6e6;
+    padding: 5px;
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
 }

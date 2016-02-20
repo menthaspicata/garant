@@ -5,8 +5,20 @@
 		$current_post_id = $post->ID;
 
 		$house_price_front = esc_attr(get_post_meta( $current_post_id, '_house_price', true ));
-		$house_price_UAH_front = number_format($house_price_front * $USD_p24, 0, ',', ' ');
+
+		if ( get_post_meta( $current_post_id, '_house_price_grivna', true ) ) {
+			$house_price_UAH_front = number_format(esc_attr(get_post_meta( $current_post_id, '_house_price_grivna', true )), 0, ',', ' ');
+		} else {
+			$house_price_UAH_front = number_format($house_price_front * $USD_p24, 0, ',', ' ');
+		}
+
+
+		//$house_price_UAH_front = number_format($house_price_front * $USD_p24, 0, ',', ' ');
+		
 		$house_price_front = number_format($house_price_front, 0, ',', ' ');
+
+
+
 		$house_floor_front = esc_attr(get_post_meta( $current_post_id, '_house_floor', true ));
 		$house_all_floor_front = esc_attr(get_post_meta( $current_post_id, '_house_all_floor', true ));
 		$house_rooms_front = esc_attr(get_post_meta( $current_post_id, '_house_rooms', true ));
@@ -69,6 +81,6 @@
 
 
 <?php else : ?>
-	<h1>Ничего не найдено</h1>
+	<h1 class="nothing_found">Ничего не найдено</h1>
 
 <?php	endif; ?>

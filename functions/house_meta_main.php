@@ -12,8 +12,9 @@ $house_fields = array(
 	"house_adress",				//улица
 	"house_adress_number",		//номер дома
 	"house_adress_apartment", 	//Номер квартиры
-	"house_adress_lat",			//широта
-	"house_adress_long",			//долгота
+	"house_adress_korpus", 	   //корпус
+	//"house_adress_lat",			//широта
+	//"house_adress_long",			//долгота
 	"house_floor",					//этаж
 	"house_rooms",					//количество комнат
 	"house_description",			//описание
@@ -149,28 +150,23 @@ function add_view_house_meta_main( $post ) {
 	</p>
 
 	<p>
+		<label for="house_adress_korpus">Корпус:</label>
+		<input type="text" id="house_adress_korpus" name="house_adress_korpus" value="<?= esc_attr( $house_adress_korpus ) ?>" size="8" />
+	</p>
+
+	<p>
 		<label for="house_adress_apartment">Номер квартиры:</label>
 		<input type="text" id="house_adress_apartment" name="house_adress_apartment" value="<?= esc_attr( $house_adress_apartment ) ?>" size="8" />
 	</p>
 
-	<p>
-		<label for="house_adress_lat">Широта (lat):</label>
-		<input type="text" id="house_adress_lat" name="house_adress_lat" value="<?= esc_attr( $house_adress_lat ) ?>" size="8" />
-	</p>
 
-	<p>
-		<label for="house_adress_long">Долгота (long):</label>
-		<input type="text" id="house_adress_long" name="house_adress_long" value="<?= esc_attr( $house_adress_long ) ?>" size="8" />
-	</p>
 	<hr>
-	<p>Широту и долготу нужно брать из google maps, предварительно указав точный адрес. Где их найти написано <a href="https://support.google.com/maps/answer/18539?hl=ru">тут</a></p>
-	<hr>
-
 
 	<p>
 		<label for="house_price">Цена в долларах:</label>
 		<input onchange="" type="text" id="house_price" name="house_price" value="<?= esc_attr( $house_price ) ?>" size="8" />
-		<br>
+	</p>
+	<p>
 		<label for="house_price_grivna">Цена в гривнах:</label>
 		<input id="house_price_grivna" type="text" name="house_price_grivna" value="<?= esc_attr( $house_price_grivna ) ?>" size="8">
 

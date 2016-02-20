@@ -113,6 +113,17 @@
 			echo '</div>';
 		}
 
+?>
+		
+
+		<span id="more">больше фильтров</span>
+
+
+		<div id="spoiler">
+
+
+			<span id="less">меньше фильтров</span>
+<?php
 
 		/**
 		 * 	районы
@@ -257,10 +268,34 @@
 
 		?>
 
+		</div>
+
 
 
 		<input class="search_house" type="submit" value="Искать" name="house_filters_submit">
 
 	</form>
+
+	<script type="text/javascript">
+
+		function spoiler() {
+			var more = document.getElementById('more');
+			var less = document.getElementById('less');
+			var spoiler = document.getElementById('spoiler');
+
+			more.onclick = function() {
+				spoiler.style.display="block";
+				more.style.display="none";
+			};
+
+			less.onclick = function() {
+				spoiler.style.display="none";
+				more.style.display="block";
+			};
+		}
+
+		spoiler();
+		
+	</script>
 
 </section>
