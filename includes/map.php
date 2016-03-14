@@ -11,8 +11,14 @@
 	if($geo_data['status']=='OK'){
 		$lati = $geo_data['results'][0]['geometry']['location']['lat'];
 		$longi = $geo_data['results'][0]['geometry']['location']['lng'];
-		//$formatted_address = $geo_data['results'][0]['formatted_address'];
-	} 
+		$formatted_address = $geo_data['results'][0]['formatted_address'];
+	} else {
+		/*
+		 *		херсон
+		 */
+		$lati = 46.635417;
+      $longi = 32.616867;
+	}
 
 ?>
 
@@ -25,22 +31,7 @@
 		var map;
 		var lati = <?= $lati; ?>;
 		var longi = <?= $longi; ?>;
-
-		function initMap() {
-
-			var center = new google.maps.LatLng(lati, longi);
-
-			map = new google.maps.Map(document.getElementById('map'), {
-				center: center,
-				zoom: 15,
-			});
-
-			var marker = new google.maps.Marker({
-				position: center,
-				map: map,
-				title: '<?= the_title(); ?>' 
-			});
-		}
+		var title = '<?= the_title(); ?>';		
 
 	</script>
 

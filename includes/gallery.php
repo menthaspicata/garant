@@ -24,13 +24,5 @@
 
 		//echo do_shortcode( $house_gallery_front[0] );
 	?>
-
-	<script type="text/javascript">
-
-		function gallery_view(obj) { 
-			document.getElementsByClassName("thumb")[0].innerHTML = '<img src="' + obj.src + '" class="material_shadow">';
-		}
-
-	</script>
 	
 </div>

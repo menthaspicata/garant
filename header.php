@@ -7,8 +7,9 @@
 	<link rel="icon" type="image/png" href="<?= get_template_directory_uri() . '/img/favicon.png'; ?>" />
 	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/style.css'; ?>">
 
-	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/media-max-480.css'; ?>" media="screen and (max-width:480px)">
-	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/media-min-480-max-768.css'; ?>" media="screen and (max-width:768px) and (min-width:481px)">
+	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/media-max-480.css'; ?>" >
+	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/media-min-480-max-768.css'; ?>" >
+	<link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/media-min-769-max-1050.css'; ?>" >
 
 	<?php wp_head(); ?>
 </head>

@@ -54,78 +54,6 @@
 		}
 
 		/**
-		 *		направление
-		 */
-		$house_direction = get_terms( 'house_direction' );
-		if ( ! empty( $house_direction ) && ! is_wp_error( $house_direction ) ){
-			echo '<div class="filter-element">';
-			echo '<label for="house_direction">';
-			echo 'Направление:';
-			echo '</label>';
-			
-			echo '<select class="house_direction" name="direction">';
-
-				echo '<option value="all" >Все</option>';
-				foreach ( $house_direction as $term ) {
-
-					echo '<option value="' . $term->slug . '"';
-
-					if ( $term->slug == $direction ) {
-						echo ' selected="selected"'; 
-					}
-
-					echo '>';
-					echo $term->name;
-					echo '</option>';
-				}
-
-			echo '</select>';
-			echo '</div>';
-		}
-
-
-		/**
-		 *		типы 
-		 */
-		$house_categories = get_terms( 'house_categories' );
-		if ( ! empty( $house_categories ) && ! is_wp_error( $house_categories ) ){
-			echo '<div class="filter-element">';
-			echo '<label for="house_categories">';
-			echo 'Тип:';
-			echo '</label>';
-			
-			echo '<select class="house_categories" name="house_type">';
-
-				echo '<option value="all" >Все</option>';
-				foreach ( $house_categories as $term ) {
-
-					echo '<option value="' . $term->slug . '"';
-
-					if ( $term->slug == $house_type ) {
-						echo ' selected="selected"'; 
-					}
-					echo '>';
-					echo $term->name;
-					echo '</option>';
-				}
-
-			echo '</select>';
-			echo '</div>';
-		}
-
-?>
-		
-
-		<span id="more">больше фильтров</span>
-
-
-		<div id="spoiler">
-
-
-			<span id="less">меньше фильтров</span>
-<?php
-
-		/**
 		 * 	районы
 		 */
 		
@@ -169,7 +97,78 @@
 		</div>
 
 
-		<?php 
+
+		<span id="more">больше фильтров</span>
+
+
+		<div id="spoiler">
+
+
+			<span id="less">меньше фильтров</span>
+<?php
+
+/**
+		 *		направление
+		 */
+		$house_direction = get_terms( 'house_direction' );
+		if ( ! empty( $house_direction ) && ! is_wp_error( $house_direction ) ){
+			echo '<div class="filter-element">';
+			echo '<label for="house_direction">';
+			echo 'Направление:';
+			echo '</label>';
+			
+			echo '<select class="house_direction" name="direction">';
+
+				echo '<option value="all" >Все</option>';
+				foreach ( $house_direction as $term ) {
+
+					echo '<option value="' . $term->slug . '"';
+
+					if ( $term->slug == $direction ) {
+						echo ' selected="selected"'; 
+					}
+
+					echo '>';
+					echo $term->name;
+					echo '</option>';
+				}
+
+			echo '</select>';
+			echo '</div>';
+		}
+
+		/**
+		 *		типы 
+		 */
+		$house_categories = get_terms( 'house_categories' );
+		if ( ! empty( $house_categories ) && ! is_wp_error( $house_categories ) ){
+			echo '<div class="filter-element">';
+			echo '<label for="house_categories">';
+			echo 'Тип:';
+			echo '</label>';
+			
+			echo '<select class="house_categories" name="house_type">';
+
+				echo '<option value="all" >Все</option>';
+				foreach ( $house_categories as $term ) {
+
+					echo '<option value="' . $term->slug . '"';
+
+					if ( $term->slug == $house_type ) {
+						echo ' selected="selected"'; 
+					}
+					echo '>';
+					echo $term->name;
+					echo '</option>';
+				}
+
+			echo '</select>';
+			echo '</div>';
+		}
+
+		
+
+		
 
 
 		/**
@@ -277,22 +276,6 @@
 	</form>
 
 	<script type="text/javascript">
-
-		function spoiler() {
-			var more = document.getElementById('more');
-			var less = document.getElementById('less');
-			var spoiler = document.getElementById('spoiler');
-
-			more.onclick = function() {
-				spoiler.style.display="block";
-				more.style.display="none";
-			};
-
-			less.onclick = function() {
-				spoiler.style.display="none";
-				more.style.display="block";
-			};
-		}
 
 		spoiler();
 		
