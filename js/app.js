@@ -66,3 +66,19 @@ function initMap() {
 		title: title 
 	});
 }
+
+
+function initMap_contacts() {
+	var center = new google.maps.LatLng(46.6333595, 32.6037943);
+
+	map = new google.maps.Map(document.getElementById('map_contacts'), {
+		center: center,
+		zoom: 15,
+	});
+
+	var marker = new google.maps.Marker({
+		position: center,
+		map: map
+	});
+}
+

@@ -104,7 +104,7 @@ function add_view_house_meta_main( $post ) {
 
 			width: 30%;
 			text-align: center;
-			margin: 5px auto;
+			margin: 5px;
 			display: block;
 			border: 1px solid #32599A;
 			padding: 3px;
@@ -231,7 +231,7 @@ function add_view_house_meta_main( $post ) {
 		<label for="house_phone">Телефон владельца:</label>
 		<input type="text" id="house_phone" name="house_phone" value="<?= esc_attr( $house_phone ) ?>"  />
 
-		<span id="check_phone" onclick="check_phone(this)">проверить на совпадения</span>
+		<span id="check_phone" onclick="check_phone(this)">проверить на совпадения</span><span id="check_phone_result"></span>
 	</p>
 
 	<p>
@@ -302,54 +302,53 @@ function add_view_house_meta_main( $post ) {
 
 		$sukabliad = json_encode($sukabliad); 
 
-		echo 'var phones = ' . $sukabliad;
-}
+		echo 'var phones = ' . $sukabliad . ';';
 
-
-check_phone();
-
-?>
-
-
-	function check_phone(obj) {
-			var phone_to_check = document.getElementById('house_phone').value;
-			phone_to_check = phone_to_check.replace(/\s+/g, '');
-
-			//phones = JSON.parse(phones);
-			//console.log(phones[3].link);
-
-			for (var i = 0; i <= phones.length; i++) {
-
-				var phone = phones[i].phone;
-				var phone_id = phones[i].id;
-
-				phone = phone.replace(/\s+/g, '');
-
-				if (phone === phone_to_check) {
-
-					if (!(phone_id === curr_post_id)) {
-						obj.innerHTML = 'обнаружены совпадения: ' + ' <a href="'+ phones[i].link +'">id: '+phone_id+'</a>';
-					}
-				} else {
-					obj.innerHTML = 'совпадений нет';
-				}
-				
-			}
+		
 	}
 
 
 
 
+?>
+
+
+	function check_phone(obj) {
+
+		<?php check_phone(); ?>
+
+		var phone_to_check = document.getElementById('house_phone').value;
+		phone_to_check = phone_to_check.replace(/\s+/g, '');
+
+		var check_phone_result = document.getElementById('check_phone_result');
+
+		for (var i = 0; i <= phones.length; i++) {
+
+			var phone = phones[i].phone;
+			var phone_id = phones[i].id;
+
+			phone = phone.replace(/\s+/g, '');
+
+			if (phone === phone_to_check) {
+
+				if (!(phone_id == curr_post_id)) {
+					
+					var a = document.createElement('a');
+					var linkText = document.createTextNode('id: '+phone_id);
+					a.appendChild(linkText);
+					a.href = phones[i].link;
+					var elem = document.createTextNode('обнаружено совпадениe: ');
+					check_phone_result.appendChild(elem);
+					check_phone_result.appendChild(a);
+					check_phone_result.appendChild(document.createElement('br'));
+				}
+			}			
+		}
+	}
+
 	</script>
-
-
+	
 	</section>
-
-
-
-
-
-
 <?php
 
 }
