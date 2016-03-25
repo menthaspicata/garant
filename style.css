@@ -119,6 +119,7 @@ aside
     margin: 0 auto;
 }
 
+
 .header_nav_list {
     background: #1D4991;
     box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
@@ -153,7 +154,7 @@ aside
 .list-header h1
 {
     font-size: 40px;
-
+    padding-top: 10px;
     width: 30%;
     float: left;
 
@@ -196,12 +197,13 @@ aside
 
 .list-header .header_contacts
 {
-    -display: inline-block;
+    background: url('img/new_logo_2.png') no-repeat 80%;
 	float: right;
     width: 30%;
+    height: 100px;
 	color: #4d4d4d;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 .list-header .header_contacts li {
     font-size: 1.1em;
@@ -222,14 +224,17 @@ aside
 footer {
     margin-top: 15px;
     border-bottom: none;
+    padding: 0 30px;
 }
 
 footer h1.header_logo {
     float: right;
     width: 25%;
+    padding-right: 30px;
 }
 footer.list-header .header_contacts {
     float: left;
+    background: url('img/new_logo_2.png') no-repeat 20%;
 }
 
 .footer_nav_list a {
@@ -690,6 +695,12 @@ section.houses .house-meta.meta_loop h4 span {
 .house-content .house_landlord {
     font-size: 1.2em;
 }
+.house-content .house_landlord:after {
+    display: table;
+    content: ' ';
+    clear: both;
+}
+
  .house-meta h4 {
     padding: 9px 15px;
     margin-bottom: 0;
@@ -704,11 +715,13 @@ section.houses .house-meta.meta_loop h4 span {
 
 .house-meta.meta_loop h4 span {
     border-right: none;
+
 }
 
 .house-meta h4 span {
     display: block;
     float: right;
+    max-width: 250px;
 }
 
 .house-meta h4 span:after {
@@ -733,6 +746,141 @@ section.houses .house-meta.meta_loop h4 span {
 .house-content .pagination_left,
 .house-content .pagination_right {
 	
+}
+
+
+
+
+/**
+ *              ОТЗЫВЫ
+ */
+
+
+.house-content .comments-area .comment-respond form {
+    width: 65%;
+    margin: 30px auto 0;
+}
+
+
+
+.house-content .comments-area .comment-list li.comment {
+    width: 60%;
+    margin: 0 auto;
+    -border-left: 1px solid #1D4991;
+    -border-right: 1px solid #1D4991;
+    border-bottom: 1px solid #1D4991;
+    padding: 50px 30px 30px;
+}
+
+.house-content .comments-area .comment-list li.comment:first-child {
+    border-top: 1px solid #1D4991;
+}
+
+.house-content .comments-area .comment-list li.comment footer.comment-meta {
+    margin-top: 0;
+}
+
+.house-content .comments-area .comment-list li.comment .comment-content {
+
+}
+
+
+.house-content .comments-area .comment-respond {
+    width: 60%;
+    margin: 0 auto;
+    -border-left: 1px solid #1D4991;
+    -border-right: 1px solid #1D4991;
+    border-bottom: none;
+    padding: 50px 30px 0;
+}
+
+.house-content .comments-area .comment-respond .comment-reply-title {
+    text-align: center;
+    font-size: 2em;
+    color: #4D4D4D;
+
+}
+
+.house-content .comments-area .comment-respond .comment-form-author,
+.house-content .comments-area .comment-respond .comment-form-email {
+    
+}
+
+.house-content .comments-area .comment-respond .comment-form-comment,
+.house-content .comments-area .comment-respond .comment-form-author,
+.house-content .comments-area .comment-respond .comment-form-email {
+    box-sizing: border-box;
+}
+
+
+
+.house-content .comments-area .comment-respond .comment-form-email {
+    margin-right: 0;
+}
+
+.house-content .comments-area .comment-respond label {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    vertical-align: middle;
+    color: #4d4d4d;
+    margin-top: 20px;
+
+}
+
+.house-content .comments-area .comment-respond .comment-form-comment label {
+    vertical-align: top;
+    
+}
+
+.house-content .comments-area .comment-respond textarea,
+.house-content .comments-area .comment-respond input {
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid #1D4991;
+    width: 100%;
+}
+
+.house-content .comments-area .comment-respond .form-submit input {
+
+}
+
+
+.house-content .comments-area.reviews h4.reviews_author {
+    text-align: right;
+    font-size: 18px;
+    padding-top: 30px;
+    
+}
+
+.house-content .comments-area .comment_content {
+
+}
+
+.house-content .comments-area .comment-respond .reviews_submit {
+    display: block;
+    margin: 0 auto;
+    height: 35px;
+    padding: 7px;
+    width: 170px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid #1D4991;
+    background: #f2f2f2;
+    margin-top: 45px;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    color: #4d4d4d;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px 0 rgba(49, 53, 103, .14), 0 3px 1px -2px rgba(49, 53, 103, .2), 0 1px 5px 0 rgba(49, 53, 103, .12);
+}
+
+.house-content .comments-area .comment-respond .reviews_submit:hover {
+    background: #1D4991;
+    color: #e6e6e6   
 }
 
 

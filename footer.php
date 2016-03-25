@@ -1,14 +1,12 @@
 <footer class="list-header">
 
-	<ul class="header_contacts">
-		<li>(050)9816278</li>
-		<li>(050)9747779</li>
-		<li>ул. 9 Января 38</li>
-	</ul>
+	<div class="header_contacts">
+
+	</div>
 
 
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/logo.jpg'; ?>"></h1>
+		<h1 class="header_logo"><img src="<?= get_template_directory_uri() . '/img/new_logo.png'; ?>"></h1>
 	</a>
 
 

@@ -93,6 +93,23 @@ function add_view_house_meta_main( $post ) {
 			margin-bottom: 10px;
 			vertical-align: top;
 		}
+
+		#house_prozvon,
+		#house_phone,
+		#house_who_answer {
+			width:60%;
+		}
+
+		#check_phone {
+
+			width: 30%;
+			text-align: center;
+			margin: 5px auto;
+			display: block;
+			border: 1px solid #32599A;
+			padding: 3px;
+			cursor: pointer;
+		}
 	</style>
 
 	<section id="house_meta_wrapp">
@@ -212,23 +229,31 @@ function add_view_house_meta_main( $post ) {
 	<h2>Информация о владельце</h2>
 	<p>
 		<label for="house_phone">Телефон владельца:</label>
-		<input type="text" id="house_phone" name="house_phone" value="<?= esc_attr( $house_phone ) ?>" style="width:60%;" />
+		<input type="text" id="house_phone" name="house_phone" value="<?= esc_attr( $house_phone ) ?>"  />
+
+		<span id="check_phone" onclick="check_phone(this)">проверить на совпадения</span>
 	</p>
 
 	<p>
 		<label for="house_who_answer">ФИО:</label>
-		<input type="text" id="house_who_answer" name="house_who_answer" value="<?= esc_attr( $house_who_answer ) ?>" style="width:60%;" />
+		<input type="text" id="house_who_answer" name="house_who_answer" value="<?= esc_attr( $house_who_answer ) ?>"  />
 	</p>
 
 	<p>
 		<label for="house_prozvon">Прозвон:</label>
-		<input type="text" id="house_prozvon" name="house_prozvon" value="<?= esc_attr( $house_prozvon ) ?>" style="width:60%;" />
+		<input type="text" id="house_prozvon" name="house_prozvon" value="<?= esc_attr( $house_prozvon ) ?>" />
 	</p>
+
+
 
 
 
 
 	<script type="text/javascript">
+
+		
+
+
 		var USD_p24 = <?= $USD_p24 ?> 
 		var house_price = document.getElementById('house_price');
 		house_price.oninput = function() {
@@ -239,6 +264,82 @@ function add_view_house_meta_main( $post ) {
 		house_price_grivna.oninput = function() {
 			document.getElementById('house_price').value  = (house_price_grivna.value / USD_p24).toFixed();
 		};
+
+		//var check_phone = document.getElementById('check_phone');
+
+		<?php 
+
+		echo 'var curr_post_id = ' . $post->ID . ';';
+
+		function check_phone() {
+			$sukabliad = array();
+			global $post;
+
+
+			$house = new WP_Query ( array('post_type' => 'house',
+														'nopaging' => true,
+														'tax_query' => array(
+																				array(
+																				'taxonomy' => 'house_status',
+																				'field'    => 'slug',
+																				'terms'    => 'active'
+																			),
+																		),
+													) 
+			);
+
+			if ( $house->have_posts() ) : while ( $house->have_posts() ) : $house->the_post();  
+
+				$house_phone_to_check = esc_attr(get_post_meta( $post->ID, '_house_phone', true ));
+
+				$sukabliad[] = array('id' => $post->ID,
+											'link' => wp_get_shortlink(),
+											'phone' => $house_phone_to_check );
+
+			endwhile; endif; 
+
+		wp_reset_postdata();
+
+		$sukabliad = json_encode($sukabliad); 
+
+		echo 'var phones = ' . $sukabliad;
+}
+
+
+check_phone();
+
+?>
+
+
+	function check_phone(obj) {
+			var phone_to_check = document.getElementById('house_phone').value;
+			phone_to_check = phone_to_check.replace(/\s+/g, '');
+
+			//phones = JSON.parse(phones);
+			//console.log(phones[3].link);
+
+			for (var i = 0; i <= phones.length; i++) {
+
+				var phone = phones[i].phone;
+				var phone_id = phones[i].id;
+
+				phone = phone.replace(/\s+/g, '');
+
+				if (phone === phone_to_check) {
+
+					if (!(phone_id === curr_post_id)) {
+						obj.innerHTML = 'обнаружены совпадения: ' + ' <a href="'+ phones[i].link +'">id: '+phone_id+'</a>';
+					}
+				} else {
+					obj.innerHTML = 'совпадений нет';
+				}
+				
+			}
+	}
+
+
+
+
 	</script>
 
 
